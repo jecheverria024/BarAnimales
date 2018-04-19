@@ -27,7 +27,7 @@ public class ColaEntrada extends ObservableAbstracto {
 		return mColaEntrada;
 	}
 
-	public boolean revisarCola() {
+	private boolean revisarCola() {
 		boolean lleno = comprobarColaCompleta();
 		if (lleno) {
 			cartas.DosPrimeras();
@@ -41,7 +41,9 @@ public class ColaEntrada extends ObservableAbstracto {
 		cartas.add(c);
 
 	}
-
+	public boolean comprobarLongitudCartas(int pNum) {
+		return this.cartas.comprobarLongitudCartas(pNum);
+	}
 	private boolean comprobarColaCompleta() {
 		boolean lleno = false;
 		if (cartas.longitud() == 5) {
@@ -53,22 +55,30 @@ public class ColaEntrada extends ObservableAbstracto {
 	public String infoCartas() {
 		return this.cartas.infoCartas();
 	}
-
+	public boolean colaVacia() {
+		return this.cartas.colaVacia();
+	}
 	public void echarCarta(CartaAnimal pCarta) {
 		cartas.add(pCarta);
 		// En el if poner los animales que tengan las animaladas implementadas. mantener
 		// este if hasta que esten todas las animaladas hechas
-		if (pCarta.getFuerza() == 12 || pCarta.getFuerza() == 11 || pCarta.getFuerza() == 9 || pCarta.getFuerza() == 8
-				|| pCarta.getFuerza() == 3 || pCarta.getFuerza() == 4 || pCarta.getFuerza() == 10
-				|| pCarta.getFuerza() == 2 || pCarta.getFuerza() == 1|| pCarta.getFuerza() == 6) {
+		if (pCarta.getFuerza()==11 ||pCarta.getFuerza()==9 || pCarta.getFuerza()==8  || pCarta.getFuerza()==5) {
 			pCarta.ejecutarAnimalada();
 
 		}
-
+		
+	}
+	public void revisar() {
+		//hacer recurrentes
 		this.revisarCola();
+		this.revisarSiHayCamaleon();
 		this.notificar(this, this.infoCartas());
 	}
-
+	private void revisarSiHayCamaleon() {
+		this.cartas.revisarSiHayCamaleon();
+		
+	}
+	
 	public ListaCartas getLista() {
 		return this.cartas;
 	}
@@ -92,16 +102,27 @@ public class ColaEntrada extends ObservableAbstracto {
 		return this.cartas.buscarPorFuerza(pFuerza);	
 	}
 	
-	//adelantar (posInicial, posFinal)
+	//buscarporpos
+	
+	public int buscarPorPosicion(int pPos) {
+		return this.cartas.buscarPorPosicion(pPos);
+	}
+	//adelantar (posInicial, pFuerza)
+	public void adelantar (int pPosInicial, int pFuerza) {
+		this.cartas.adelantar(pPosInicial, pFuerza);
+	}
 	
 	//AdelantarMenoresNoCebra(posInicial, posFinal){}
-	
+	public void adelantarMenoresNoCebra(int pPosInicial, int pFuerza) {
+		this.cartas.adelantarMenoresNoCebra(pPosInicial, pFuerza);
+	}
 	//echarMenoresNoCebra(fuerza)
 	public void echarMenoresNoCebra(int pFuerza) {
 		this.cartas.echarMenoresNoCebra(pFuerza);
 	}
+	
 	//ordenar
-	public void ordenarSegunFuerza() {
+	public void ordenar() {
 		this.cartas.ordenarSegunFuerza();
 	}
 	
@@ -116,10 +137,12 @@ public class ColaEntrada extends ObservableAbstracto {
 	}
 	
 	//adelantarMonos();
-	
+	public void avanzarCartaMono() {
+		this.cartas.avanzarCartaMono();
+	}
 	//echarPorPosicion(posicion)
 	public void echarPorPosicion(int pPos) {
-		this.cartas.echarPorFuerza(pPos);
+		this.cartas.echarPorPosicion(pPos);
 	}
 	
 }

@@ -42,13 +42,16 @@ public class BarBestial {
 
 	public boolean jugar(int pos) {
 		jugador.echarCarta(pos);
+		ColaEntrada.getColaEntrada().revisar();
 		if (ordenador.tieneCartas()) {
 			ordenador.jugar();
+			ColaEntrada.getColaEntrada().revisar();
 		}
 		if (!jugador.tieneCartas() && !ordenador.tieneCartas()) {
 			this.finalizarPartida();
 			this.juegoFinalizado = true;
 		}
+	
 		return juegoFinalizado;
 	}
 

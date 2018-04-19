@@ -69,9 +69,22 @@ public class CartaAnimal extends CartaGeneral implements Comparable<CartaAnimal>
 		}
 		else return false;
 	}
+	public boolean esCamaleon() {
+		if(this.fuerza==5) {
+			return true;
+		}
+		else return false;
+	}
 
-	public void cambiarAnimal(int pFuerza) {
+	public void ejecutarAnimaladaOtroAnimal(int pFuerza) {
 		this.animal=AnimalFactory.getAnimalFactory().crearAnimal(pFuerza);
 		this.fuerza=pFuerza;
+		if (pFuerza==9 || pFuerza==8  || pFuerza==5) {
+			this.ejecutarAnimalada();
+		}
+	}
+	public void volverASerCamaleon() {
+		this.animal=AnimalFactory.getAnimalFactory().crearAnimal(5);
+		this.fuerza=5;
 	}
 }

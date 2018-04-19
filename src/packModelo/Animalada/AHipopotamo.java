@@ -6,7 +6,8 @@ public class AHipopotamo implements IAnimalada {
 
 	@Override
 	public void hacerAnimalada(int fuerza, String color) {
-		ColaEntrada.getColaEntrada().avanzarCartaHipopotamo(fuerza, color);
+		int pPosInicial=ColaEntrada.getColaEntrada().buscarPorColorFuerza(fuerza, color);
+		ColaEntrada.getColaEntrada().adelantarMenoresNoCebra(pPosInicial, fuerza);
 	}
 	
 }
