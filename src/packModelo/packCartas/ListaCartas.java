@@ -125,7 +125,7 @@ public class ListaCartas {
 		}
 	}
 
-	public void avanzarCartaJirafa(int fuerza, String color) {
+	public void avanzarCarta (int fuerza, String color) {
 		Iterator<CartaAnimal> itr = this.getIterador();
 		int posicion = 0;
 		CartaAnimal ca = null;
@@ -175,20 +175,7 @@ public class ListaCartas {
 
 	}
 
-	public boolean buscarPorFuerza(int pFuerza) {
-		int i = 0;
-		boolean enc = false;
-		while (i < lista.size() - 1 && !enc) {
-			CartaAnimal c = lista.get(i);
-			if (c.getFuerza() == pFuerza) {
-				enc = true;
-			} else {
-				i++;
-			}
-		}
-
-		return enc;
-	}
+	
 
 	public int posicionDeLaCarta(int pFuerza) {
 		int i = 0;
@@ -241,63 +228,106 @@ public class ListaCartas {
 		lista.add(0, c);
 	}
 
-	public void ordenarSegunFuerza() {
-		Collections.sort(this.lista);
-	}
 
-	public void repelerMayorFuerza() {
-		int loops = 2;
-		if (lista.size() < 2) {
-			loops = lista.size();
-		}
-		for (int i = 0; i < loops; i++) {
-			int fuerzamax = buscarCartaAlta();
-			// Iterator<CartaAnimal> it= this.getIterador();
-			/*
-			 * CartaAnimal c=null; while(it.hasNext()){ c=it.next();
-			 * if(c.getFuerza()==fuerzamax && c.getFuerza()!=1){
-			 * 
-			 * 
-			 * } }
-			 */
-			if (fuerzamax != 0) {
+
+	public void echarPorFuerza(int pFuerza) {
 				for (int j = lista.size() - 1; j >= 0; j--) {
-					if (lista.get(j).getFuerza() == fuerzamax && lista.get(j).getFuerza() != 1) {
+					if (lista.get(j).getFuerza() == pFuerza && lista.get(j).getFuerza() != 1) {
 						EsLoQueHay.getEsLoQueHay().addLast(lista.get(j));
 						System.out.println("borrada" +lista.get(j).getFuerza());
 						borrarCarta(lista.get(j));
 						imprimirlista();
 					}
-				}
-			}
-		}
+				}	
 	}
 
-	private int buscarCartaAlta() {
-		Iterator<CartaAnimal> it = this.getIterador();
-		CartaAnimal c = null;
-		int max = 1;
-		int i = lista.size() - 1;
-		while (i >= 0) {
-			if (lista.get(i).getFuerza() > max) {
-				max = lista.get(i).getFuerza();
+	
+
+
+	
+	
+	
+	//buscarPorColorFuerza(intfuerza, color)
+	public int buscarPorColorFuerza(int pFuerza, String pColor) {
+		Iterator<CartaAnimal> itr = this.getIterador();
+		int posicion = 0;
+		CartaAnimal ca = null;
+		boolean encontrado = false;
+		while (itr.hasNext() && !encontrado) {
+			ca = itr.next();
+			if (ca.info().equals(pFuerza + " " + pColor)) {
+				encontrado = true;
+			} else {
+				posicion++;
 			}
-			i--;
+		}
+		if (encontrado==false) {
+			posicion=-1;
+		}
+		return posicion;
+	}
+	
+	//buscarPorFuerza(fuerza)
+	public int buscarPorFuerza(int pFuerza) {
+		int i = -1;
+		boolean enc = false;
+		while (i < lista.size() - 1 && !enc) {
+			CartaAnimal c = lista.get(i);
+			if (c.getFuerza() == pFuerza) {
+				enc = true;
+			} else {
+				i++;
+			}
+		}
+		if(enc==false) {
+			i=-1;
+		}
+		return i;
+	}
+	
+	//adelantar (posInicial, posFinal)
+	
+	//AdelantarMenoresNoCebra(posInicial, posFinal){}
+	
+	//echarMenoresNoCebra(fuerza)
+	public void echarMenoresNoCebra(int pFuerza) {
+		System.out.println("iniciar animalada cocodrilo");
+		int i = lista.size() - 2;
+		boolean salir = false;
+		while (i >= 0 && !salir) {
+			if (!lista.get(i).compararFuerza(pFuerza) && lista.get(i).esCebra()) {
+				EsLoQueHay.getEsLoQueHay().addLast(lista.get(i));
+				lista.remove(i);
+				i--;
+			} else {
+				salir = true;
+			}
 
 		}
-		/*
-		 * while(it.hasNext()){ c=it.next(); if(c.getFuerza()>=max){ max=c.getFuerza();
-		 * } }
-		 */
-		return max;
 	}
-
-	public void asustarLoro(int pos) {
+	
+	//ordenar
+	public void ordenarSegunFuerza() {
+		Collections.sort(this.lista);
+	}
+	
+	//invertir
+	public void invertirFoca() {	
+		Collections.reverse(lista);
+	}
+	
+	//copiaranimal(pfuerza)--> camaleon
+	public void copiarAnimal(int pFuerza) {
+		this.lista.get(this.lista.size()-1).cambiarAnimal(pFuerza);
+		this.lista.get(this.lista.size()-1).ejecutarAnimalada();;
+	}
+	
+	//adelantarMonos();
+	
+	//echarPorPosicion(posicion)
+	public void echarPorPosicion(int pos) {
 		EsLoQueHay.getEsLoQueHay().addLast(lista.get(pos));
 		borrarCarta(lista.get(pos));
 	}
-	public void invertirFoca() {
-		
-		Collections.reverse(lista);
-	}
+	
 }

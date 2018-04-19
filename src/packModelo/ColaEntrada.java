@@ -1,6 +1,7 @@
 package packModelo;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import packInterface.VentanaPrincipal;
 import packModelo.packCartas.CartaAnimal;
@@ -77,26 +78,48 @@ public class ColaEntrada extends ObservableAbstracto {
 		cartas.imprimirlista();
 	}
 
-	public void avanzarCartaHipopotamo(int fuerza, String color) {
-		cartas.avanzarCartaHipopotamo(fuerza, color);
-	}
 
-	public void avanzarCartaJirafa(int fuerza, String color) {
-		cartas.avanzarCartaJirafa(fuerza, color);
+	
+	
+	//buscarPorColorFuerza(intfuerza, color)
+	public int buscarPorColorFuerza(int pFuerza, String pColor) {
+		return this.cartas.buscarPorColorFuerza(pFuerza, pColor);
 	}
-
-	public void ordenar() {
+	
+	
+	//buscarPorFuerza
+	public int buscarPorFuerza(int pFuerza) {
+		return this.cartas.buscarPorFuerza(pFuerza);	
+	}
+	
+	//adelantar (posInicial, posFinal)
+	
+	//AdelantarMenoresNoCebra(posInicial, posFinal){}
+	
+	//echarMenoresNoCebra(fuerza)
+	public void echarMenoresNoCebra(int pFuerza) {
+		this.cartas.echarMenoresNoCebra(pFuerza);
+	}
+	//ordenar
+	public void ordenarSegunFuerza() {
 		this.cartas.ordenarSegunFuerza();
 	}
-
-	public void repelerMofeta() {
-		this.cartas.repelerMayorFuerza();
-	}
-
-	public void asustarLoro(int pos) {
-		this.cartas.asustarLoro(pos);
-	}
-	public void invertirFoca() {
+	
+	//invertir
+	public void invertirFoca() {	
 		this.cartas.invertirFoca();
 	}
+	
+	//copiaranimal(pfuerza)--> camaleon
+	public void copiarAnimal(int pFuerza) {
+		this.cartas.copiarAnimal(pFuerza);
+	}
+	
+	//adelantarMonos();
+	
+	//echarPorPosicion(posicion)
+	public void echarPorPosicion(int pPos) {
+		this.cartas.echarPorFuerza(pPos);
+	}
+	
 }

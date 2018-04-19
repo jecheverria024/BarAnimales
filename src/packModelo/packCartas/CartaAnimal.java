@@ -2,6 +2,7 @@ package packModelo.packCartas;
 
 import packModelo.EnumColor;
 import packModelo.Animal.Animal;
+import packModelo.Animal.AnimalFactory;
 
 public class CartaAnimal extends CartaGeneral implements Comparable<CartaAnimal> {
 	private int fuerza;
@@ -50,4 +51,27 @@ public class CartaAnimal extends CartaGeneral implements Comparable<CartaAnimal>
 		else 
 			return false;
 	}	
+	
+	//true si la fuerza de entrada es menor
+	//false si la fuerza es mayor
+	public boolean compararFuerza(int pFuerza) {
+		if(this.fuerza>pFuerza) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	
+	public boolean esCebra() {
+		if(this.fuerza==7) {
+			return true;
+		}
+		else return false;
+	}
+
+	public void cambiarAnimal(int pFuerza) {
+		this.animal=AnimalFactory.getAnimalFactory().crearAnimal(pFuerza);
+		this.fuerza=pFuerza;
+	}
 }
