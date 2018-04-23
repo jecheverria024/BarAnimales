@@ -127,14 +127,14 @@ public class ListaCartas {
 	}
 	//buscarPorFuerza(fuerza) excepto ultima carta
 	public int buscarPorFuerza(int pFuerza) {
-		int i = 0;
+		int i = lista.size()-1;
 		boolean enc = false;
-		while (i < lista.size()-1 && !enc) {
+		while (i >= 0 && !enc) {
 			CartaAnimal c = lista.get(i);
 			if (c.getFuerza() == pFuerza) {
 				enc = true;
 			} else {
-				i++;
+				i--;
 			}
 		}
 		if(enc==false) {
@@ -197,7 +197,7 @@ public class ListaCartas {
 	}
 	
 	//adelantarMonos();
-	public void avanzarCartaMono() {
+	public void avanzarPrimeraPos() {
 		CartaAnimal c = lista.get(lista.size() - 1);
 		lista.remove(lista.size() - 1);
 		lista.add(0, c);
@@ -234,6 +234,116 @@ public class ListaCartas {
 		}
 		else return true;
 	}
+	//añade una carta en una posicion 
+
+	public void anadirEnPos(int i, CartaAnimal c) {
+			borrarCarta(c);
+			lista.add(i,c);
+		
+	}
+	//busca si hay mas monos
+	public int hayMas(){
+		return this.buscarPorFuerza(4);
+	}
+	//espanta a los cocodrilos e hipopotamos
+	public void espantar(){
+		int pos;
+		int pos1;
+		pos=this.buscarPorFuerza(10);
+		pos1=this.buscarPorFuerza(11);
+		while(pos!=-1 || pos1!=-1){
+			if(pos!=-1){
+				EsLoQueHay.getEsLoQueHay().addLast(getCarta(pos));
+				this.borrarCarta(getCarta(pos));
+			}else if(pos1!=-1){
+				EsLoQueHay.getEsLoQueHay().addLast(getCarta(pos1));
+				this.borrarCarta(getCarta(pos1));
+			}
+			
+			pos=this.buscarPorFuerza(10);
+			pos1= this.buscarPorFuerza(11);
+			
+		}
+		
+	}
 	
 	
-}
+	//mueve los demas monos de la lista de cartas
+	public void moverDemasMonos(){
+		int i=1;
+		while(i<longitud()){
+			if(getCarta(i).getFuerza()==4){
+				CartaAnimal c=getCarta(i);
+				//borrarCarta(c);
+				anadirEnPos(1, c);
+				}
+			i++;
+		}
+	}
+	public void comerAnimales() {
+		
+		int i = buscarPorFuerza(10)-1;
+		boolean salir = false;
+		while (i >= 0 && !salir) {
+			if (lista.get(i).getFuerza() < 10 && lista.get(i).getFuerza() != 7) {
+				EsLoQueHay.getEsLoQueHay().addLast(lista.get(i));
+				lista.remove(i);
+				i--;
+			} else {
+				salir = true;
+			}
+
+		}
+	}
+
+	public void eliminarMonos() {
+		 boolean salir = false;
+		    while (!salir) {
+		     
+		        int i = buscarPorFuerza(4);
+		        if (i!=-1) {
+		        CartaAnimal c = lista.get(i);
+		        borrarCarta(lista.get(i));
+		        EsLoQueHay.getEsLoQueHay().addLast(c);
+		      }
+		      else {
+		        salir = true;
+		      }
+		    }
+		
+	}
+
+	public void comprobarSalto(int num) {
+		
+			if (lista.size() >= 3) {
+				if (num == 1) {
+
+					CartaAnimal carta = lista.get(lista.size() - 2);
+					this.lista.remove(carta);
+					this.lista.add(lista.size() - 1, carta);
+
+				} else if (num == 2) {
+
+					CartaAnimal carta = lista.get(lista.size() - 1);
+					this.lista.remove(carta);
+					this.lista.add(lista.size() - 2, carta);
+
+				} else {
+					System.out.println("inserta un 1 o un 2");
+
+				}
+			} else if (lista.size() == 2) {
+
+				CartaAnimal carta = lista.get(lista.size() - 1);
+				this.lista.remove(carta);
+				this.lista.add(lista.size() - 1, carta);
+
+			}
+
+		}
+		
+	}
+
+
+	
+

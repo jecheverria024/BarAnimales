@@ -66,8 +66,8 @@ public class ColaEntrada extends ObservableAbstracto {
 		cartas.add(pCarta);
 		// En el if poner los animales que tengan las animaladas implementadas. mantener
 		// este if hasta que esten todas las animaladas hechas
-		if (pCarta.getFuerza() == 11 || pCarta.getFuerza() == 9 || pCarta.getFuerza() == 8 || pCarta.getFuerza() == 5
-				|| pCarta.getFuerza() == 6 || pCarta.getFuerza() == 2 || pCarta.getFuerza() == 1) {
+		if (pCarta.getFuerza() == 11 ||pCarta.getFuerza() == 10 || pCarta.getFuerza() == 9  ||pCarta.getFuerza() == 12 || pCarta.getFuerza() == 8 || pCarta.getFuerza() == 5
+				|| pCarta.getFuerza() == 6 || pCarta.getFuerza() == 4 ||pCarta.getFuerza() ==3 ||pCarta.getFuerza() == 2 || pCarta.getFuerza() == 1) {
 			pCarta.ejecutarAnimalada();
 
 		}
@@ -143,15 +143,46 @@ public class ColaEntrada extends ObservableAbstracto {
 	}
 
 	// adelantarMonos();
-	public void avanzarCartaMono() {
+	/*public void avanzarCartaMono() {
 		this.cartas.avanzarCartaMono();
-	}
+	}*/
 
 	// echarPorPosicion(posicion)
 	public void echarPorPosicion(int pPos) {
 		this.cartas.echarPorPosicion(pPos);
 	}
+	public int hayMas(){
+		return this.cartas.hayMas();
+	}
+	public void espantar(){
+		this.cartas.espantar();
+	}
 	
+	public void anadirEnPos(int pos, CartaAnimal c){
+		this.cartas.anadirEnPos(pos, c);
+	}
 	
+	public void moverDemasMonos(){
+		this.cartas.moverDemasMonos();
+	}
+	public CartaAnimal devolverCarta(int pos){
+		CartaAnimal c= cartas.getCarta(pos);
+		return c;
+	}
+	public void comerAnimales(){
+		cartas.comerAnimales();
+	}
+	
+	public void eliminarMonos(){
+		cartas.eliminarMonos();
+	}
+
+	public void borrarCarta(CartaAnimal carta) {
+		cartas.borrarCarta(carta);
+		
+	}
+	public void comprobarSalto(int num){
+		cartas.comprobarSalto(num);
+	}
 
 }

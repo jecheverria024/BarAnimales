@@ -2,26 +2,69 @@ package packModelo.Animalada;
 
 import java.util.Scanner;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import packInterface.VentanaDeSalto;
+import packModelo.BarBestial;
 import packModelo.ColaEntrada;
 import packModelo.packCartas.CartaAnimal;
 import packModelo.packCartas.ListaCartas;
 
 public class ACanguro implements IAnimalada {
-
+ListaCartas list=ColaEntrada.getColaEntrada().getLista();
 	@Override
 public void hacerAnimalada(int pFuerza, String pColor) {
-		int num;
 		
-		Scanner sc= new Scanner(System.in);
+		//int num=0;
+		JFrame frame = new JFrame( "Eleccion");
+		boolean correcto=false;
+		int pPos=-1;
+		if(BarBestial.getBarBestial().esTurnoJugador()) {
+			if(!ColaEntrada.getColaEntrada().colaVacia() ) {
+				while(!correcto) {
+					try {
+						pPos=Integer.parseInt(JOptionPane.showInputDialog(frame, "Introduzca posicion en la cola"));	    		
+					}
+					catch(Exception e) {
+						
+						JOptionPane.showMessageDialog(frame, "Introduzca un numero valido, por favor");
+					}
+			    	if(ColaEntrada.getColaEntrada().comprobarLongitudCartas(pPos) && pPos>0) {
+			    		correcto=true;
+			    		//pPos--;
+			    	}
+				}
+				
+			}
+			else {
+				JOptionPane.showMessageDialog(frame, "No hay elementos en la cola para elegir");
+			}
+		}else{
+			if(!ColaEntrada.getColaEntrada().colaVacia() ){
+				System.out.println("Canguro Ordenador");
+				while(!correcto) {
+			    	pPos= (int) (Math.random()*1 + 1) ;		
+			    	if(ColaEntrada.getColaEntrada().comprobarLongitudCartas(pPos) && pPos>0) {
+			    		correcto=true;
+			    		//pPos--;
+			    	}
+			    		
+				}
+			}
+		}
+		/*Scanner sc= new Scanner(System.in);
 		System.out.println("Inserta un 1 o un 2 para Saltar 1 o 2 Cartas");
 		//falta implementar para que seleccionen un numero desde la interfaz
-		num=sc.nextInt();
-		this.saltar(num);
+		num=sc.nextInt();*/
+		
+		this.saltar(pPos);
 
 	}
 
 	private void saltar(int num){
-		ColaEntrada.getColaEntrada().getLista().avanzarCartaCanguro(num);
+		
+		ColaEntrada.getColaEntrada().comprobarSalto(num);
 		
 	}
 }

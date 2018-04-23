@@ -9,38 +9,20 @@ public class ALeon implements IAnimalada
 {
   public ALeon() {}
   
-  ListaCartas list = ColaEntrada.getColaEntrada().getLista();
+ ColaEntrada cola = ColaEntrada.getColaEntrada();
  
   public void hacerAnimalada(int pFuerza, String pColor) {
-    boolean esta = list.buscarPorFuerza(12);
-    System.out.println(esta);
-    System.out.println("animalada leon");
-    if (!esta) {
-      eliminarMonos();
-      moverPrimeraPos();
+    int posicion = cola.buscarPorFuerza(12);
+   
+    if (posicion!=-1) {
+      cola.eliminarMonos();
+      cola.anadirEnPos(0,cola.getLista().getCarta(cola.getLista().longitud()-1));
     }
     else {
-      EsLoQueHay.getEsLoQueHay().addLast(list.getCarta(list.longitud() - 1));
-      list.borrarCarta(list.getCarta(list.longitud() - 1));
+      EsLoQueHay.getEsLoQueHay().addLast(cola.getLista().getCarta(cola.getLista().longitud()-1));
+      cola.borrarCarta(cola.getLista().getCarta(cola.getLista().longitud()-1));
     }
   }
   
-  private void eliminarMonos() {
-    boolean salir = false;
-    while (!salir) {
-      if (list.buscarPorFuerza(4)) {
-        int i = list.posicionDeLaCarta(4);
-        CartaAnimal c = list.getCarta(i);
-        list.borrarCarta(list.getCarta(i));
-        EsLoQueHay.getEsLoQueHay().addLast(c);
-      }
-      else {
-        salir = true;
-      }
-    }
-  }
-  
-  private void moverPrimeraPos() {
-    list.avanzarCartaLeon();
-  }
+
 }
