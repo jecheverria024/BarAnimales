@@ -9,7 +9,8 @@ public class AMofeta implements IAnimalada {
 		System.out.println("mofetaaaaaaaaaaa");
 		int echados = 0;
 		int fuerza = 12;
-		while (echados < 2) {
+		boolean flag =!ColaEntrada.getColaEntrada().colaVacia();
+		while (false==ColaEntrada.getColaEntrada().colaVacia()&& flag && echados < 2  ) {
 			if (fuerza > 1) {
 				if (ColaEntrada.getColaEntrada().buscarPorFuerza(fuerza) > -1) {
 					echados++;
@@ -19,7 +20,7 @@ public class AMofeta implements IAnimalada {
 								.echarPorPosicion(ColaEntrada.getColaEntrada().buscarPorFuerza(fuerza));
 					}
 				}
-			}
+			}else {flag=false;}
 			fuerza--;
 
 		}

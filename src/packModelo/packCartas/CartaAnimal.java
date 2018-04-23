@@ -79,7 +79,7 @@ public class CartaAnimal extends CartaGeneral implements Comparable<CartaAnimal>
 	public void ejecutarAnimaladaOtroAnimal(int pFuerza) {
 		this.animal=AnimalFactory.getAnimalFactory().crearAnimal(pFuerza);
 		this.fuerza=pFuerza;
-		if (pFuerza==9 || pFuerza==8  || pFuerza==5) {
+		if (pFuerza==9 || pFuerza==8  || pFuerza==5|| pFuerza==6|| pFuerza==2|| pFuerza==1) {
 			this.ejecutarAnimalada();
 		}
 	}

@@ -227,7 +227,7 @@ public class ListaCartas {
 	}
 
 	public boolean colaVacia() {
-		if(this.lista.size()>0) {
+		if(this.lista.size()>1) {
 			return false;
 		}
 		else return true;
