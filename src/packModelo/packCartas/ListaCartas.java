@@ -46,7 +46,7 @@ public class ListaCartas {
 		return lista.iterator();
 	}
 
-	private void borrarCarta(CartaAnimal c) {
+	public void borrarCarta(CartaAnimal c) {
 		lista.remove(c);
 	}
 
@@ -59,7 +59,13 @@ public class ListaCartas {
 		EsLoQueHay.getEsLoQueHay().addLast(c);
 		borrarCarta(c);
 	}
+	public CartaAnimal eliminar(int i) {
+		CartaAnimal c = getCarta(i);
+		borrarCarta(c);
+		return c;
 
+	}
+	
 	public CartaAnimal cogerCartaDelMazo() {
 		return lista.get(lista.size() - 1);
 	}
