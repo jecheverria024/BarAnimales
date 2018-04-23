@@ -29,7 +29,9 @@ public class BarBestial {
 		this.inicializarPartida();
 		this.repartirCartas();
 	}
-
+	public boolean esTurnoJugador() {
+		return turno;
+	}
 	private void inicializarPartida() {
 		ColaEntrada.getColaEntrada();
 		PuertaDelCielo.getPuertaDelCielo();
@@ -43,9 +45,11 @@ public class BarBestial {
 	public boolean jugar(int pos) {
 		jugador.echarCarta(pos);
 		ColaEntrada.getColaEntrada().revisar();
+		cambiarTurno();
 		if (ordenador.tieneCartas()) {
 			ordenador.jugar();
 			ColaEntrada.getColaEntrada().revisar();
+			cambiarTurno();
 		}
 		if (!jugador.tieneCartas() && !ordenador.tieneCartas()) {
 			this.finalizarPartida();
@@ -54,7 +58,10 @@ public class BarBestial {
 	
 		return juegoFinalizado;
 	}
-
+	
+	private void cambiarTurno() {
+		turno=!turno;
+	}
 	private void repartirCartas() {
 		jugador.barajar();
 		ordenador.barajar();
