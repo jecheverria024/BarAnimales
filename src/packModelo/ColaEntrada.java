@@ -144,5 +144,5 @@ public class ColaEntrada extends ObservableAbstracto {
 	public void echarPorPosicion(int pPos) {
 		this.cartas.echarPorPosicion(pPos);
 	}
-	
+
 }

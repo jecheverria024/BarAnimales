@@ -87,4 +87,6 @@ public class CartaAnimal extends CartaGeneral implements Comparable<CartaAnimal>
 		this.animal=AnimalFactory.getAnimalFactory().crearAnimal(5);
 		this.fuerza=5;
 	}
+	
+	
 }

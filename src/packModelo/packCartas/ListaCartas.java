@@ -227,4 +227,5 @@ public class ListaCartas {
 		else return true;
 	}
 	
+	
 }
