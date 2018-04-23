@@ -154,12 +154,14 @@ public class ListaCartas {
 	}
 	//AdelantarMenoresNoCebra(posInicial, posFinal){}
 	public void adelantarMenoresNoCebra (int pPosInicial, int pFuerza) {
-		pPosInicial = pPosInicial - 1;
+		int i=pPosInicial-1;
 		System.out.println("Posicion: " + pPosInicial);
-		if (pPosInicial >= 0 && !this.lista.get(pPosInicial).compararFuerza(pFuerza)
-				&& !this.lista.get(pPosInicial).esCebra()) {
+		if (i >= 0 && this.lista.get(i).compararFuerza(pFuerza)
+				&& !this.lista.get(i).esCebra()) {
+			System.out.println("entre hipo");
 			CartaAnimal ca=this.lista.remove(pPosInicial);
-			this.lista.add(pPosInicial, ca);
+			ColaEntrada.getColaEntrada().imprimir();
+			lista.add(i, ca);
 		}
 	}
 	//echarMenoresNoCebra(fuerza)

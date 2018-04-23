@@ -118,6 +118,7 @@ public class ColaEntrada extends ObservableAbstracto {
 
 	// AdelantarMenoresNoCebra(posInicial, posFinal){}
 	public void adelantarMenoresNoCebra(int pPosInicial, int pFuerza) {
+		System.out.println(pPosInicial);
 		this.cartas.adelantarMenoresNoCebra(pPosInicial, pFuerza);
 	}
 
@@ -150,5 +151,7 @@ public class ColaEntrada extends ObservableAbstracto {
 	public void echarPorPosicion(int pPos) {
 		this.cartas.echarPorPosicion(pPos);
 	}
+	
+	
 
 }
