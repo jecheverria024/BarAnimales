@@ -67,18 +67,25 @@ public class ColaEntrada extends ObservableAbstracto {
 		// En el if poner los animales que tengan las animaladas implementadas. mantener
 		// este if hasta que esten todas las animaladas hechas
 		if (pCarta.getFuerza() == 11 ||pCarta.getFuerza() == 10 || pCarta.getFuerza() == 9  ||pCarta.getFuerza() == 12 || pCarta.getFuerza() == 8 || pCarta.getFuerza() == 5
-				|| pCarta.getFuerza() == 6 || pCarta.getFuerza() == 4 ||pCarta.getFuerza() ==3 ||pCarta.getFuerza() == 2 || pCarta.getFuerza() == 1) {
+				|| pCarta.getFuerza() == 6 || pCarta.getFuerza() == 4 
+				||pCarta.getFuerza() ==3 ||pCarta.getFuerza() == 2 || pCarta.getFuerza() == 1) {
 			pCarta.ejecutarAnimalada();
 
 		}
+		this.revisar(pCarta);
 
 	}
 
-	public void revisar() {
+	public void revisar(CartaAnimal pCarta) {
 		// hacer recurrentes
 		this.revisarCola();
 		this.revisarSiHayCamaleon();
+		this.realizarRecurrentes(pCarta);
 		this.notificar(this, this.infoCartas());
+	}
+
+	private void realizarRecurrentes(CartaAnimal pCarta) {
+		this.cartas.realizarRecurrentes(pCarta);
 	}
 
 	private void revisarSiHayCamaleon() {
@@ -117,9 +124,9 @@ public class ColaEntrada extends ObservableAbstracto {
 	}
 
 	// AdelantarMenoresNoCebra(posInicial, posFinal){}
-	public void adelantarMenoresNoCebra(int pPosInicial, int pFuerza) {
+	public boolean adelantarMenoresNoCebra(int pPosInicial, int pFuerza) {
 		System.out.println(pPosInicial);
-		this.cartas.adelantarMenoresNoCebra(pPosInicial, pFuerza);
+		return this.cartas.adelantarMenoresNoCebra(pPosInicial, pFuerza);
 	}
 
 	// echarMenoresNoCebra(fuerza)

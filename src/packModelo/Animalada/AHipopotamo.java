@@ -6,7 +6,19 @@ public class AHipopotamo implements IAnimalada {
 
 	@Override
 	public void hacerAnimalada(int fuerza, String color) {
-		ColaEntrada.getColaEntrada().adelantarMenoresNoCebra(ColaEntrada.getColaEntrada().buscarPorColorFuerza(fuerza, color), 11);
+		int posicion=ColaEntrada.getColaEntrada().buscarPorColorFuerza(fuerza, color);
+		
+		boolean salir=false;
+		while(!salir) {
+			System.out.println("pos hipo: "+posicion);
+			if (ColaEntrada.getColaEntrada().adelantarMenoresNoCebra(posicion, fuerza)) {
+				posicion--;
+			}
+			else {
+				salir=true;
+			}
+		
+		}
 	}
 	
 }

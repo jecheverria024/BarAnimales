@@ -145,24 +145,28 @@ public class ListaCartas {
 	
 	//adelantar (pPosInicial)
 	public void adelantar (int pPosInicial, int pFuerza) {
-		pPosInicial = pPosInicial - 1;
-		System.out.println("Posicion: " + pPosInicial);
-		if (pPosInicial >= 0 && !this.lista.get(pPosInicial).compararFuerza(pFuerza)) {
+		int i=pPosInicial-1;
+		if (i >= 0 && this.lista.get(i).compararFuerza(pFuerza)) {
 			CartaAnimal ca=this.lista.remove(pPosInicial);
-			this.lista.add(pPosInicial, ca);
+			this.lista.add(i, ca);
 		}
 	}
 	//AdelantarMenoresNoCebra(posInicial, posFinal){}
-	public void adelantarMenoresNoCebra (int pPosInicial, int pFuerza) {
+	public boolean adelantarMenoresNoCebra (int pPosInicial, int pFuerza) {
 		int i=pPosInicial-1;
+		boolean puedeAdelantar;
 		System.out.println("Posicion: " + pPosInicial);
 		if (i >= 0 && this.lista.get(i).compararFuerza(pFuerza)
 				&& !this.lista.get(i).esCebra()) {
 			System.out.println("entre hipo");
 			CartaAnimal ca=this.lista.remove(pPosInicial);
-			ColaEntrada.getColaEntrada().imprimir();
 			lista.add(i, ca);
+			puedeAdelantar=true;
 		}
+		else {
+			puedeAdelantar=false;
+		}
+		return puedeAdelantar;
 	}
 	//echarMenoresNoCebra(fuerza)
 	public void echarMenoresNoCebra(int pFuerza) {
@@ -206,8 +210,10 @@ public class ListaCartas {
 	
 	//echarPorPosicion(posicion)
 	public void echarPorPosicion(int pos) {
-		EsLoQueHay.getEsLoQueHay().addLast(lista.get(pos));
-		borrarCarta(lista.get(pos));
+		if (pos>=0) {
+			EsLoQueHay.getEsLoQueHay().addLast(lista.get(pos));
+			borrarCarta(lista.get(pos));
+		}
 	}
 
 	public void revisarSiHayCamaleon() {
@@ -341,6 +347,21 @@ public class ListaCartas {
 			}
 
 		}
+
+	public void realizarRecurrentes(CartaAnimal pCartas) {
+		//Aqui hay un problema, mientras se recorre la lista, puede que se elimine algun elemento de la misma
+		//por el cocodrilo por ejemplo y hay que empezar de atras palante.
+		Iterator<CartaAnimal> itr=this.getIterador();
+		CartaAnimal ca=null;
+		while(itr.hasNext()) {
+			
+			ca=itr.next();
+			if(!ca.equals(pCartas)) {
+				ca.esRecurrente();
+			}
+		}
+		
+	}
 		
 	}
 

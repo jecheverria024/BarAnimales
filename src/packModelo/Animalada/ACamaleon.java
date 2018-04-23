@@ -48,9 +48,10 @@ public class ACamaleon implements IAnimalada {
 			}
 		}
 		
-		
-		int fuerza=ColaEntrada.getColaEntrada().buscarPorPosicion(pPos);
-		ColaEntrada.getColaEntrada().copiarAnimal(fuerza);
+		if (pPos>=0) {
+			int fuerza=ColaEntrada.getColaEntrada().buscarPorPosicion(pPos);
+			ColaEntrada.getColaEntrada().copiarAnimal(fuerza);
+		}
 	}
 	
 }

@@ -3,6 +3,7 @@ package packModelo.packCartas;
 import packModelo.EnumColor;
 import packModelo.Animal.Animal;
 import packModelo.Animal.AnimalFactory;
+import packModelo.Animal.IRecurrente;
 
 public class CartaAnimal extends CartaGeneral implements Comparable<CartaAnimal> {
 	private int fuerza;
@@ -44,18 +45,17 @@ public class CartaAnimal extends CartaGeneral implements Comparable<CartaAnimal>
         return 0;
 	}
 	
-	public boolean esRecurrente() {
-		if (this.fuerza==11 || this.fuerza==10 || this.fuerza==8 || this.fuerza==7){
-			return true;
+	public void esRecurrente() {
+		if (this.animal instanceof IRecurrente){
+			((IRecurrente) this.animal).recurrir(fuerza, color.name());
 		}
-		else 
-			return false;
+
 	}	
 	
 	//true si la fuerza de entrada es menor
 	//false si la fuerza es mayor
 	public boolean compararFuerza(int pFuerza) {
-		if(this.fuerza>pFuerza) {
+		if(this.fuerza>=pFuerza) {
 			return false;
 		}
 		else {

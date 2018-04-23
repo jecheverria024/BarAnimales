@@ -44,11 +44,11 @@ public class BarBestial {
 
 	public boolean jugar(int pos) {
 		jugador.echarCarta(pos);
-		ColaEntrada.getColaEntrada().revisar();
+		
 		cambiarTurno();
 		if (ordenador.tieneCartas()) {
 			ordenador.jugar();
-			ColaEntrada.getColaEntrada().revisar();
+			
 			cambiarTurno();
 		}
 		if (!jugador.tieneCartas() && !ordenador.tieneCartas()) {
