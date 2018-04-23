@@ -127,7 +127,7 @@ public class ListaCartas {
 	}
 	//buscarPorFuerza(fuerza) excepto ultima carta
 	public int buscarPorFuerza(int pFuerza) {
-		int i = -1;
+		int i = 0;
 		boolean enc = false;
 		while (i < lista.size()-1 && !enc) {
 			CartaAnimal c = lista.get(i);
