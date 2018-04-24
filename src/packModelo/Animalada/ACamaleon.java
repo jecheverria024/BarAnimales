@@ -32,6 +32,8 @@ public class ACamaleon implements IAnimalada {
 			}
 			else {
 				JOptionPane.showMessageDialog(frame, "No hay elementos en la cola para elegir");
+				pPos=0;
+
 			}
 		}
 		else {
@@ -48,9 +50,11 @@ public class ACamaleon implements IAnimalada {
 			}
 		}
 		
-		
-		int fuerza=ColaEntrada.getColaEntrada().buscarPorPosicion(pPos);
+		if(!ColaEntrada.getColaEntrada().colaVacia() ) {
+			int fuerza=ColaEntrada.getColaEntrada().buscarPorPosicion(pPos);
 		ColaEntrada.getColaEntrada().copiarAnimal(fuerza);
+		}
+		
 	}
 	
 }

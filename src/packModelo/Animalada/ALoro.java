@@ -30,6 +30,7 @@ public class ALoro implements IAnimalada {
 			    	if(ColaEntrada.getColaEntrada().comprobarLongitudCartas(pPos) && pPos>0) {
 			    		correcto=true;
 			    		pPos--;
+			    		
 			    	}
 				}
 				
@@ -50,8 +51,9 @@ public class ALoro implements IAnimalada {
 				}
 				
 			}
-		}		
-		ColaEntrada.getColaEntrada().echarPorPosicion(pPos);
+		}	
+		if(!ColaEntrada.getColaEntrada().colaVacia() ) {
+		ColaEntrada.getColaEntrada().echarPorPosicion(pPos);}
 	}
 
 }
