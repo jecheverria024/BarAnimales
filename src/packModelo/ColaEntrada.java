@@ -66,12 +66,10 @@ public class ColaEntrada extends ObservableAbstracto {
 		cartas.add(pCarta);
 		// En el if poner los animales que tengan las animaladas implementadas. mantener
 		// este if hasta que esten todas las animaladas hechas
-		if (pCarta.getFuerza() == 11 ||pCarta.getFuerza() == 10 || pCarta.getFuerza() == 9  ||pCarta.getFuerza() == 12 || pCarta.getFuerza() == 8 || pCarta.getFuerza() == 5
-				|| pCarta.getFuerza() == 6 || pCarta.getFuerza() == 4 
-				||pCarta.getFuerza() ==3 ||pCarta.getFuerza() == 2 || pCarta.getFuerza() == 1) {
+	//	if (pCarta.getFuerza() == 10 ) {
 			pCarta.ejecutarAnimalada();
 
-		}
+	//	}
 		this.revisar(pCarta);
 
 	}

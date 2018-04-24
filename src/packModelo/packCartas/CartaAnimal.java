@@ -49,7 +49,6 @@ public class CartaAnimal extends CartaGeneral implements Comparable<CartaAnimal>
 		if (this.animal instanceof IRecurrente){
 			((IRecurrente) this.animal).recurrir(fuerza, color.name());
 		}
-
 	}	
 	
 	//true si la fuerza de entrada es menor
