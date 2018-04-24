@@ -31,7 +31,8 @@ public void hacerAnimalada(int pFuerza, String pColor) {
 						JOptionPane.showMessageDialog(frame, "Introduzca un numero valido, por favor");
 					}
 			    	if(ColaEntrada.getColaEntrada().comprobarLongitudCartas(pPos) && pPos>0) {
-			    		correcto=true;
+			    		if(pPos==1 || pPos==2) {
+			    		correcto=true;}
 			    		//pPos--;
 			    	}
 				}
