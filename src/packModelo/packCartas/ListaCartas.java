@@ -352,12 +352,19 @@ public class ListaCartas {
 		//Aqui hay un problema, mientras se recorre la lista, puede que se elimine algun elemento de la misma
 		//por el cocodrilo por ejemplo y hay que empezar de atras palante.
 		Iterator<CartaAnimal> itr=this.getIterador();
+		ArrayList<CartaAnimal> hechos=new ArrayList<CartaAnimal>();
+		hechos.add(pCartas);
 		CartaAnimal ca=null;
-		while(itr.hasNext()) {
-			
-			ca=itr.next();
-			if(!ca.equals(pCartas)) {
+		int i=this.lista.size()-1;
+		while(i>=0) {
+			ca=this.lista.get(i);
+			if(!hechos.contains(ca)) {
 				ca.esRecurrente();
+				hechos.add(ca);
+				i=this.lista.size()-1;
+			}
+			else {
+				i--;
 			}
 		}
 		
