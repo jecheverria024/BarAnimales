@@ -32,6 +32,8 @@ public class ACamaleon implements IAnimalada {
 			}
 			else {
 				JOptionPane.showMessageDialog(frame, "No hay elementos en la cola para elegir");
+				pPos=0;
+
 			}
 		}
 		else {
@@ -48,10 +50,18 @@ public class ACamaleon implements IAnimalada {
 			}
 		}
 		
+<<<<<<< HEAD
 		if (pPos>=0) {
 			int fuerza=ColaEntrada.getColaEntrada().buscarPorPosicion(pPos);
 			ColaEntrada.getColaEntrada().copiarAnimal(fuerza);
 		}
+=======
+		if(!ColaEntrada.getColaEntrada().colaVacia() ) {
+			int fuerza=ColaEntrada.getColaEntrada().buscarPorPosicion(pPos);
+		ColaEntrada.getColaEntrada().copiarAnimal(fuerza);
+		}
+		
+>>>>>>> 6980a04dfc839831f14673013d2e3ea8a508f2d0
 	}
 	
 }
