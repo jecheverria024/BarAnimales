@@ -1,5 +1,7 @@
 package packModelo;
 
+import java.util.concurrent.TimeUnit;
+
 import packModelo.Usuario.Jugador;
 import packModelo.Usuario.Ordenador;
 import packModelo.packCartas.CartaAnimal;
@@ -47,6 +49,7 @@ public class BarBestial {
 		
 		cambiarTurno();
 		if (ordenador.tieneCartas()) {
+			
 			ordenador.jugar();
 			
 			cambiarTurno();

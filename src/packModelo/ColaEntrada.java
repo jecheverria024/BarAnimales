@@ -81,6 +81,12 @@ public class ColaEntrada extends ObservableAbstracto {
 		this.realizarRecurrentes(pCarta);
 		this.notificar(this, this.infoCartas());
 	}
+	public void revisarO() {
+		// hacer recurrentes
+		
+		this.notificar(this, this.infoCartas());
+	}
+
 
 	private void realizarRecurrentes(CartaAnimal pCarta) {
 		this.cartas.realizarRecurrentes(pCarta);
