@@ -54,13 +54,17 @@ public void hacerAnimalada(int pFuerza, String pColor) {
 				}
 			}
 		}
-		this.saltar(pPos);
-
+		int pos= ColaEntrada.getColaEntrada().buscarPorColorFuerza(pFuerza, pColor);
+		this.saltar(pos);
+		if(pPos==2) {
+			pos= ColaEntrada.getColaEntrada().buscarPorColorFuerza(pFuerza, pColor);
+			this.saltar(pos);
+		}
 	}
 
-	private void saltar(int num){
+	private void saltar(int pos){
 		
-		ColaEntrada.getColaEntrada().comprobarSalto(num);
+		ColaEntrada.getColaEntrada().comprobarSalto(pos);
 		
 	}
 }

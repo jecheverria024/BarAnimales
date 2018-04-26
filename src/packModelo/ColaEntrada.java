@@ -66,10 +66,10 @@ public class ColaEntrada extends ObservableAbstracto {
 		cartas.add(pCarta);
 		// En el if poner los animales que tengan las animaladas implementadas. mantener
 		// este if hasta que esten todas las animaladas hechas
-	//	if (pCarta.getFuerza() == 10 ) {
+		//if (pCarta.getFuerza() == 3 ) {
 			pCarta.ejecutarAnimalada();
 
-	//	}
+		//}
 		this.revisar(pCarta);
 
 	}
@@ -128,8 +128,8 @@ public class ColaEntrada extends ObservableAbstracto {
 	}
 
 	// echarMenoresNoCebra(fuerza)
-	public void echarMenoresNoCebra(int pFuerza) {
-		this.cartas.echarMenoresNoCebra(pFuerza);
+	public boolean echarMenoresNoCebra(int pPosInicial,int pFuerza) {
+		return this.cartas.echarMenoresNoCebra( pPosInicial,pFuerza);
 	}
 
 	// ordenar
@@ -147,10 +147,7 @@ public class ColaEntrada extends ObservableAbstracto {
 		this.cartas.copiarAnimal(pFuerza);
 	}
 
-	// adelantarMonos();
-	/*public void avanzarCartaMono() {
-		this.cartas.avanzarCartaMono();
-	}*/
+	
 
 	// echarPorPosicion(posicion)
 	public void echarPorPosicion(int pPos) {
@@ -174,9 +171,7 @@ public class ColaEntrada extends ObservableAbstracto {
 		CartaAnimal c= cartas.getCarta(pos);
 		return c;
 	}
-	public void comerAnimales(){
-		cartas.comerAnimales();
-	}
+	
 	
 	public void eliminarMonos(){
 		cartas.eliminarMonos();
@@ -186,8 +181,8 @@ public class ColaEntrada extends ObservableAbstracto {
 		cartas.borrarCarta(carta);
 		
 	}
-	public void comprobarSalto(int num){
-		cartas.comprobarSalto(num);
+	public void comprobarSalto(int pPos){
+		cartas.comprobarSalto(pPos);
 	}
 
 }

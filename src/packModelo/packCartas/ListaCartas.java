@@ -169,20 +169,20 @@ public class ListaCartas {
 		return puedeAdelantar;
 	}
 	//echarMenoresNoCebra(fuerza)
-	public void echarMenoresNoCebra(int pFuerza) {
-		System.out.println("iniciar animalada cocodrilo");
-		int i = lista.size() - 2;
-		boolean salir = false;
-		while (i >= 0 && !salir) {
-			if (!lista.get(i).compararFuerza(pFuerza) && lista.get(i).esCebra()) {
-				EsLoQueHay.getEsLoQueHay().addLast(lista.get(i));
-				lista.remove(i);
-				i--;
-			} else {
-				salir = true;
-			}
-
+	public boolean echarMenoresNoCebra(int pPosInicial, int pFuerza) {
+		int i=pPosInicial-1;
+		boolean puedeAdelantar;
+		System.out.println("Posicion: " + pPosInicial);
+		if (i >= 0 && this.lista.get(i).compararFuerza(pFuerza)
+				&& !this.lista.get(i).esCebra()) {
+			CartaAnimal ca=this.lista.remove(i);
+			EsLoQueHay.getEsLoQueHay().addLast(ca);
+			puedeAdelantar=true;
 		}
+		else {
+			puedeAdelantar=false;
+		}
+		return puedeAdelantar;
 	}
 	
 	//ordenar
@@ -286,21 +286,7 @@ public class ListaCartas {
 			i++;
 		}
 	}
-	public void comerAnimales() {
-		
-		int i = buscarPorFuerza(10)-1;
-		boolean salir = false;
-		while (i >= 0 && !salir) {
-			if (lista.get(i).getFuerza() < 10 && lista.get(i).getFuerza() != 7) {
-				EsLoQueHay.getEsLoQueHay().addLast(lista.get(i));
-				lista.remove(i);
-				i--;
-			} else {
-				salir = true;
-			}
 
-		}
-	}
 
 	public void eliminarMonos() {
 		 boolean salir = false;
@@ -319,33 +305,14 @@ public class ListaCartas {
 		
 	}
 
-	public void comprobarSalto(int num) {
-		
-			if (lista.size() >= 3) {
-				if (num == 1) {
-
-					CartaAnimal carta = lista.get(lista.size() - 2);
-					this.lista.remove(carta);
-					this.lista.add(lista.size() - 1, carta);
-
-				} else if (num == 2) {
-
-					CartaAnimal carta = lista.get(lista.size() - 1);
-					this.lista.remove(carta);
-					this.lista.add(lista.size() - 2, carta);
-
-				} else {
-					System.out.println("inserta un 1 o un 2");
-
-				}
-			} else if (lista.size() == 2) {
-
-				CartaAnimal carta = lista.get(lista.size() - 1);
-				this.lista.remove(carta);
-				this.lista.add(lista.size() - 1, carta);
-
+	public void comprobarSalto(int pPosInicial) {
+		//adelantar (pPosInicial)
+			
+			int i=pPosInicial-1;
+			if (i >= 0) {
+				CartaAnimal ca=this.lista.remove(pPosInicial);
+				this.lista.add(i, ca);
 			}
-
 		}
 
 	public void realizarRecurrentes(CartaAnimal pCartas) {
