@@ -78,7 +78,7 @@ public class ListaCartas {
 		Collections.shuffle(lista);
 	}
 
-	public void DosPrimeras() {
+	public void dosPrimeras() {
 
 		for (int i = 0; i < 2; i++) {
 			CartaAnimal c = this.conseguirCarta();

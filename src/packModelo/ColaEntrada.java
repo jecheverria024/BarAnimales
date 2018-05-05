@@ -30,7 +30,7 @@ public class ColaEntrada extends ObservableAbstracto {
 	private boolean revisarCola() {
 		boolean lleno = comprobarColaCompleta();
 		if (lleno) {
-			cartas.DosPrimeras();
+			cartas.dosPrimeras();
 			cartas.ultimaCarta();
 		}
 		return lleno;
@@ -81,11 +81,7 @@ public class ColaEntrada extends ObservableAbstracto {
 		this.realizarRecurrentes(pCarta);
 		this.notificar(this, this.infoCartas());
 	}
-	public void revisarO() {
-		// hacer recurrentes
-		
-		this.notificar(this, this.infoCartas());
-	}
+	
 
 
 	private void realizarRecurrentes(CartaAnimal pCarta) {

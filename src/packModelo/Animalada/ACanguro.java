@@ -12,7 +12,7 @@ import packModelo.packCartas.CartaAnimal;
 import packModelo.packCartas.ListaCartas;
 
 public class ACanguro implements IAnimalada {
-ListaCartas list=ColaEntrada.getColaEntrada().getLista();
+
 	@Override
 public void hacerAnimalada(int pFuerza, String pColor) {
 		

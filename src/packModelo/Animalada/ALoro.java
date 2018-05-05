@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
-import packInterface.VentanaPedirPosicion;
 import packInterface.VentanaPrincipal;
 import packModelo.BarBestial;
 import packModelo.ColaEntrada;
