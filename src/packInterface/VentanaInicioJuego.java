@@ -80,6 +80,7 @@ public class VentanaInicioJuego extends JFrame {
 			panel.add(getBtnJugar());
 			panel.add(getBtnSalir());
 			panel.add(getBtnRegistrarse());
+			
 		}
 		return panel;
 	}
@@ -190,10 +191,11 @@ public class VentanaInicioJuego extends JFrame {
 	private JButton getBtnRegistrarse() {
 		if (btnRegistrarse == null) {
 			btnRegistrarse = new JButton("Registro");
-			btnJugar.addActionListener(new Controlador());
-			btnJugar.setActionCommand("Registro");
+			btnRegistrarse.addActionListener(new Controlador());
+			btnRegistrarse.setActionCommand("Registro");
 
 		}
+		
 		return btnRegistrarse;
 	}
 
@@ -220,7 +222,7 @@ public class VentanaInicioJuego extends JFrame {
 			} else if (action.equals("Salir")) {
 				cerrar();
 			}
-			if (action.equals("Registro")){
+			else if (action.equals("Registro")){
 				VentanaRegistro frame3=new VentanaRegistro();
 				frame3.setVisible(true);
 				dispose();
