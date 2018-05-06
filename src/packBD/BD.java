@@ -3,44 +3,104 @@ package packBD;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.mysql.jdbc.Statement;
 
+
+
 public class BD {
-	
-	private BD bd;
-	private Statement st;
+
 	private Connection conn;
-	public BD(){
-		bd=new BD();
+	private static BD miBD=null;
+	private BD() {
+		this.conectar();
 	}
-	
-	public void conectar(String ip, int puerto, String user, String pass){
-		//cargar mysqlDriver
-		try{
-			Class.forName("org.gtj.mm.mysql.Driver");
-		}catch(ClassNotFoundException e){
-			e.printStackTrace();
-		}
-		
-		//abrir conexion
-		try{
-			Connection conn= DriverManager.getConnection("jdbc:mysql://"+ip+":"+puerto, user, pass);
-			conn.setAutoCommit(true);
-			Statement st= (Statement) conn.createStatement();
-		}catch(SQLException e){
-			e.printStackTrace();
+	public static BD getGestorBD() {
+		if (miBD == null) {
+			miBD = new BD();
 			
 		}
+		return miBD;
+	}
+	  
+	public void setConexion(Connection conexion) {
+	        this.conn = conexion;
+	}
+	public Connection getConexion() {
+		return conn;
+	}    
+	public void conectar(){
+		// TODO Auto-generated method stub
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			System.out.println("Registro completo");
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.toString());
+		}
+
+		Connection con = null;
+
+		try {
+			String jdbc="jdbc:mysql://localhost/BarBestial";
+			String usuario="admin";
+			String pass="";
+			
+			this.setConexion(DriverManager.getConnection(jdbc, usuario, pass));
+
+			// Otros y operaciones sobre la base de datos...
+			System.out.println("Conexion completada");
+			
+
+		} catch (SQLException ex) {
+
+			System.out.println("SQLException: " + ex.getMessage());
+
+		}
 		
 		
 	}
-	
-	public void devolverRanking() throws SQLException{
-		String sentencia= "Select username, puntos from registro.Usuarios";
-		ResultSet res= st.executeQuery(sentencia);
+	public void almacenarRanking(String nombre, int puntuacion) throws SQLException {
+		Statement sentencia = (Statement) getConexion().createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+		String sql="INSERT INTO Usuarios(puntuacion) VALUES("+puntuacion+") WHERE Username='"+nombre + "'";
+		sentencia.executeUpdate(sql);	
 		
+	}
+	public JSONArray  obtenerPuntuacion(String sql) throws JSONException {
+		JSONArray json=new JSONArray();
+		try {
+			Statement sentencia = (Statement) getConexion().createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+			ResultSet resultado=sentencia.executeQuery(sql);	
+			ResultSetMetaData rsmd =resultado.getMetaData();
+			resultado.beforeFirst();
+			while(resultado.next()) {
+				int numCol=rsmd.getColumnCount();
+				JSONObject obj = new JSONObject();
+				for(int i=1; i<numCol+1; i++) {
+	                String column_name = rsmd.getColumnLabel(i); 
+	                switch( rsmd.getColumnType( i ) ) {
+		                case java.sql.Types.INTEGER:
+		                    obj.put(column_name, resultado.getInt(column_name));
+		                    break;
+		                case java.sql.Types.VARCHAR:
+	                        obj.put(column_name, resultado.getString(column_name));   
+	                        break;
+		                }
+				}
+				json.put(obj);				
+			}
+
+		} catch (SQLException ex) {
+
+			System.out.println("SQLException: " + ex.getMessage());
+		}		
+		 return json;
 	}
 
 }
