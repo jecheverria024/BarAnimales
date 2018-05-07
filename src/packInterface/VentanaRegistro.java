@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -38,11 +39,11 @@ public class VentanaRegistro extends JFrame {
 	private JPanel panel_10;
 	private JPanel panel_11;
 	private JLabel lblInsertarContrasea;
-	private JTextField textField_1;
+	private JPasswordField textField_1;
 	private JPanel panel_12;
 	private JPanel panel_13;
 	private JLabel lblConfirmarContrasea;
-	private JTextField textField_2;
+	private JPasswordField textField_2;
 	
 	/**
 	 * Launch the application.
@@ -215,9 +216,9 @@ public class VentanaRegistro extends JFrame {
 		}
 		return lblInsertarContrasea;
 	}
-	private JTextField getTextField_1() {
+	private JPasswordField getTextField_1() {
 		if (textField_1 == null) {
-			textField_1 = new JTextField();
+			textField_1 = new JPasswordField();
 			textField_1.setColumns(10);
 		}
 		return textField_1;
@@ -245,9 +246,9 @@ public class VentanaRegistro extends JFrame {
 		}
 		return lblConfirmarContrasea;
 	}
-	private JTextField getTextField_2() {
+	private JPasswordField getTextField_2() {
 		if (textField_2 == null) {
-			textField_2 = new JTextField();
+			textField_2 = new JPasswordField();
 			textField_2.setColumns(10);
 		}
 		return textField_2;

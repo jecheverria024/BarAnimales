@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
 import packModelo.BarBestial;
@@ -38,7 +39,7 @@ public class VentanaInicioJuego extends JFrame {
 	private JPanel panel_5;
 	private JPanel panel_6;
 	private JLabel lblInsertaPassword;
-	private JTextField textField_1;
+	private JPasswordField textField_1;
 	private JButton btnRegistrarse;
 
 	/**
@@ -181,9 +182,9 @@ public class VentanaInicioJuego extends JFrame {
 		}
 		return lblInsertaPassword;
 	}
-	private JTextField getTextField_1_1() {
+	private JPasswordField getTextField_1_1() {
 		if (textField_1 == null) {
-			textField_1 = new JTextField();
+			textField_1 = new JPasswordField();
 			textField_1.setColumns(10);
 		}
 		return textField_1;
