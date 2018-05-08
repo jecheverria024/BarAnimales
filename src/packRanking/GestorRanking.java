@@ -23,7 +23,7 @@ public class GestorRanking {
 	}
 	
 	public JSONArray  getRanking() throws JSONException {
-		JSONArray json= BD.getGestorBD().obtenerPuntuacion("SELECT * FROM Usuarios ORDER BY puntuacion DESC LIMIT 10");	
+		JSONArray json= BD.getGestorBD().obtenerPuntuacion("SELECT * FROM Usuarios ORDER BY Puntuacion DESC LIMIT 10");	
 		return json;
 	}
 }

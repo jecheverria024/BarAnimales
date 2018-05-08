@@ -18,6 +18,7 @@ public class BD {
 
 	private Connection conn;
 	private static BD miBD=null;
+	private String driver="net.ucanacess.jdbc.UcanacessDriver";
 	private BD() {
 		this.conectar();
 	}
@@ -38,7 +39,7 @@ public class BD {
 	public void conectar(){
 		// TODO Auto-generated method stub
 		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Class.forName(driver).newInstance();
 			System.out.println("Registro completo");
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -48,7 +49,7 @@ public class BD {
 		Connection con = null;
 
 		try {
-			String jdbc="jdbc:mysql://localhost/BarBestial";
+			String jdbc="jdbc:ucanacess://src/BarBestial.accdb"; //fichero access
 			String usuario="admin";
 			String pass="";
 			
@@ -68,7 +69,7 @@ public class BD {
 	}
 	public void almacenarRanking(String nombre, int puntuacion) throws SQLException {
 		Statement sentencia = (Statement) getConexion().createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
-		String sql="INSERT INTO Usuarios(puntuacion) VALUES("+puntuacion+") WHERE Username='"+nombre + "'";
+		String sql="INSERT INTO Usuarios(Puntuacion) VALUES("+puntuacion+") WHERE Username='"+nombre + "'";
 		sentencia.executeUpdate(sql);	
 		
 	}

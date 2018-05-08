@@ -4,5 +4,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/Users/David/Desktop/json-20171018.jar"/>
 	<classpathentry kind="lib" path="C:/Users/David/Desktop/mysql-connector-java-5.1.45-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/enriq/Desktop/json-20171018.jar"/>
+	<classpathentry kind="lib" path="C:/Users/enriq/Desktop/mysql-connector-java-5.1.45-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/enriq/Desktop/ucanaccess-4.0.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
