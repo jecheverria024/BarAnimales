@@ -18,7 +18,7 @@ public class BD {
 
 	private Connection conn;
 	private static BD miBD=null;
-	private String driver="net.ucanacess.jdbc.UcanacessDriver";
+	private String driver="net.ucanaccess.jdbc.UcanaccessDriver";
 	private BD() {
 		this.conectar();
 	}
@@ -39,7 +39,7 @@ public class BD {
 	public void conectar(){
 		// TODO Auto-generated method stub
 		try {
-			Class.forName(driver).newInstance();
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 			System.out.println("Registro completo");
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -49,11 +49,11 @@ public class BD {
 		Connection con = null;
 
 		try {
-			String jdbc="jdbc:ucanacess://src/BarBestial.accdb"; //fichero access
-			String usuario="admin";
+			String jdbc="jdbc:ucanaccess://src/BarBestial.accdb"; //fichero access
+			String usuario="";
 			String pass="";
 			
-			this.setConexion(DriverManager.getConnection(jdbc, usuario, pass));
+			this.setConexion(DriverManager.getConnection(jdbc));
 
 			// Otros y operaciones sobre la base de datos...
 			System.out.println("Conexion completada");
