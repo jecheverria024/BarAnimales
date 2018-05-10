@@ -74,12 +74,7 @@ public class BarBestial {
 		}
 	}
 
-	/*
-	 * public void echarCarta(int pi) { if(!jugador.echarCarta(pi)) {
-	 * if(finalizarPartida()) { juegoFinalizado=true; } }
-	 * 
-	 * }
-	 */
+	
 	// aqui hay dudas
 	public Jugador getJugador() {
 		return this.jugador;
@@ -88,17 +83,13 @@ public class BarBestial {
 		return this.jugador.infoMano();
 	}
 	private void finalizarPartida() {
-		/*
-		 * if (Jugador.getJugador().getPuntos() > Ordenador.getOrdenador().getPuntos())
-		 * { System.out.println("el jugador" + Jugador.getJugador().getNombre() +
-		 * "ha ganado"); } else System.out.println("el ordenador ha ganado");
-		 * this.juegoFinalizado = true;
-		 */
+		System.out.println("El ganador es " +PuertaDelCielo.getPuertaDelCielo().calcularGanador());
 		System.out.println("PARTIDA FINALIZADA");
 		EsLoQueHay.getEsLoQueHay().imprimir();
 		PuertaDelCielo.getPuertaDelCielo().imprimir();
 		ColaEntrada.getColaEntrada().imprimir();
 	}
+	
 
 	private void imprimirmazo() {
 		System.out.println("jugador");

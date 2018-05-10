@@ -336,6 +336,38 @@ public class ListaCartas {
 		}
 		
 	}
+	
+	public int buscarColor(EnumColor pColor) {
+		int cont=0;
+		Iterator<CartaAnimal> itr=this.getIterador();
+		CartaAnimal ca=null;
+		while(itr.hasNext()){
+			ca=itr.next();
+			if(ca.esColor(pColor)) {
+				cont++;
+			}
+		}
+		return cont;
+	}
+	public EnumColor minPuntos() {
+		
+		int cont=0;
+		Iterator<CartaAnimal> itr=this.getIterador();
+		CartaAnimal ca=null;
+		while(itr.hasNext()){
+			ca=itr.next();
+			if(ca.esColor(EnumColor.AZUL)) {
+				cont=cont+ca.getFuerza();	
+			}else {
+				cont=cont-ca.getFuerza();	
+
+			}
+		}
+		if(cont>0) {
+			return EnumColor.VERDE;
+			
+		}else {return EnumColor.AZUL;}
+	}
 		
 	}
 

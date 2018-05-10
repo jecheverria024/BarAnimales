@@ -87,5 +87,12 @@ public class CartaAnimal extends CartaGeneral implements Comparable<CartaAnimal>
 		this.fuerza=5;
 	}
 	
+	public boolean esColor(EnumColor pColor) {
+		if(pColor.equals(color)) {
+			return true;	
+		}
+		return false;
+	}
+	
 	
 }

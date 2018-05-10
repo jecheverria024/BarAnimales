@@ -209,6 +209,9 @@ public class VentanaInicioJuego extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			String action = e.getActionCommand();
 			if (action.equals("Jugar")) {
+				String contra=textField_1.getText();
+				String usu=textField.getText();
+				System.out.println("contra "+contra+" usu "+usu);
 				VentanaPartida frame2 = new VentanaPartida();
 				Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 				Dimension frameSize = frame2.getSize(); //Tama�o del frame actual (ancho x alto)
