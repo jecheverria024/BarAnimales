@@ -13,10 +13,12 @@ public class ALeon implements IAnimalada
  
   public void hacerAnimalada(int pFuerza, String pColor) {
     int posicion = cola.buscarPorFuerza(12);
+    int pos2= cola.buscarPorColorFuerza(pFuerza, pColor);
+   
     
-    if (posicion!=-1) {
+    if (posicion==-1) {
       cola.eliminarMonos();
-      cola.anadirEnPos(0,cola.getLista().getCarta(cola.getLista().longitud()-1));
+      cola.anadirEnPos(0,cola.getLista().getCarta(pos2));
     }
     else {
       EsLoQueHay.getEsLoQueHay().addLast(cola.getLista().getCarta(cola.getLista().longitud()-1));
