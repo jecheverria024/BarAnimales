@@ -19,13 +19,17 @@ import java.awt.Font;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import java.awt.GridLayout;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.FlowLayout;
 
 
 
@@ -34,12 +38,15 @@ import java.awt.event.MouseEvent;
 public class Ranking extends JFrame {
 
 	private JPanel contentPane;
-	private JPanel panel;
-	JPanel panel_1 = new JPanel();
-	private JLabel lblRanking;
-	private JLabel lblListadoPuntuacion;
-	private JTable table;
 	private JTextField[][] textField;
+	private JPanel panel;
+	private JPanel panel_1;
+	private JLabel lblRanking;
+	private JButton btnSalir;
+	private JPanel panel_2;
+	private JButton btnVolverAlMen;
+
+
 	
 
 	public static void main(String[] args) {
@@ -64,56 +71,12 @@ public class Ranking extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		contentPane.add(getPanel());
+		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.add(getPanel(), BorderLayout.NORTH);
+		contentPane.add(getPanel_1(), BorderLayout.SOUTH);		
+		contentPane.add(getPanel_2(), BorderLayout.CENTER);
+		cargarPanel(panel_2);
 		//this.cargarResultados();
-	}
-	private JPanel getPanel() {
-		if (panel == null) {
-			panel = new JPanel();
-			this.setTitle("Ranking");
-			panel.setBounds(0, 0, 524, 331);
-			panel.setLayout(null);
-			panel.add(getRanking());
-			panel.add(getLblListadoPuntuacion());
-			ButtonGroup group = new ButtonGroup();
-
-			table = new JTable();
-			table.setBounds(10, 249, 174, -163);
-			panel.add(table);
-			
-			
-			panel_1.setBounds(20, 83, 276, 237);
-			panel.add(panel_1);
-			panel_1.setLayout(new GridLayout(11, 3, 0, 0));
-			
-			JButton btnNewButton = new JButton("Volver a inicio");
-			btnNewButton.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent arg0) {
-					dispose();
-				}
-			});
-			btnNewButton.setBounds(360, 297, 126, 23);
-			panel.add(btnNewButton);
-			
-			textField = new JTextField[11][3];
-			for (int x = 0; x < 11; x++) {
-				for (int y = 0; y < 3; y++) {
-					textField[x][y] = new JTextField();
-					panel_1.add(textField[x][y]);
-				}
-			}
-			Font fuente = new Font("Serief",Font.BOLD, 12);
-			textField[0][0].setText("Posicion");
-			textField[0][0].setFont(fuente);
-			textField[0][1].setText("Nombre");
-			textField[0][1].setFont(fuente);
-			textField[0][2].setText("Puntuacion");
-			textField[0][2].setFont(fuente);
-		}
-				
-		return panel;
 	}
 	private void limpiarTextField() {
 		for (int x = 1; x < textField.length; x++) {
@@ -121,23 +84,6 @@ public class Ranking extends JFrame {
 				textField[x][y].setText("");
 			}
 		}
-	}
-	private JLabel getRanking() {
-		if (lblRanking == null) {
-			lblRanking = new JLabel("Ranking");
-			lblRanking.setBounds(10, 11, 83, 14);
-			lblRanking.setForeground(Color.BLACK);
-			lblRanking.setFont(new Font("Stencil", Font.PLAIN, 16));
-		}
-		return lblRanking;
-	}
-
-	private JLabel getLblListadoPuntuacion() {
-		if (lblListadoPuntuacion == null) {
-			lblListadoPuntuacion = new JLabel("Listado puntuacion  ");
-			lblListadoPuntuacion.setBounds(23, 58, 126, 14);
-		}
-		return lblListadoPuntuacion;
 	}
 	private void cargarResultados() {
 		try {
@@ -155,5 +101,96 @@ public class Ranking extends JFrame {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+	}
+	private JPanel getPanel() {
+		if (panel == null) {
+			panel = new JPanel();
+			panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+			panel.add(getLblRanking());
+		}
+		return panel;
+	}
+	private JPanel getPanel_1() {
+		if (panel_1 == null) {
+			panel_1 = new JPanel();
+			panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+			panel_1.add(getBtnVolverAlMen());
+			panel_1.add(getBtnSalir());
+		}
+		return panel_1;
+	}
+
+	private JLabel getLblRanking() {
+		if (lblRanking == null) {
+			lblRanking = new JLabel("Ranking");
+			lblRanking.setFont(new Font("Tahoma", Font.PLAIN, 27));
+		}
+		return lblRanking;
+	}
+	private JButton getBtnSalir() {
+		if (btnSalir == null) {
+			btnSalir = new JButton("Salir");
+			btnSalir.addActionListener(new Controlador());
+			btnSalir.setActionCommand("Salir");
+		}
+		return btnSalir;
+	}
+
+	private void cargarPanel(JPanel panel) {
+		textField = new JTextField[11][3];
+		for (int x = 0; x < 11; x++) {
+			for (int y = 0; y < 3; y++) {
+				textField[x][y] = new JTextField();
+				panel.add(textField[x][y]);
+			}
+		}
+	}
+	
+	private class Controlador extends WindowAdapter implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			String action= arg0.getActionCommand();
+			if(action.equals("Salir")) {
+				this.salir();
+			}else if(action.equals("volver al menu")) {
+				VentanaInicioJuego frame=new VentanaInicioJuego();
+				frame.setVisible(true);
+				dispose();
+			}
+
+		}
+		
+		public void salir() {
+			Object[] options = { "ACEPTAR", "CANCELAR" };
+			int eleccion = JOptionPane.showOptionDialog(rootPane, "Quieres cerrar la aplicacion?", "Confirmar Cierre",
+					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, "Aceptar");
+			if (eleccion == JOptionPane.YES_OPTION) {
+				System.exit(0);
+			} else {
+
+			}
+
+		}
+		}
+		
+	
+
+	
+	private JPanel getPanel_2() {
+		if (panel_2 == null) {
+			panel_2 = new JPanel();
+			panel_2.setLayout(new GridLayout(11, 3, 0, 0));
+		}
+		return panel_2;
+	}
+	private JButton getBtnVolverAlMen() {
+		if (btnVolverAlMen == null) {
+			btnVolverAlMen = new JButton("volver al menu");
+			btnVolverAlMen.addActionListener(new Controlador());
+			btnVolverAlMen.setActionCommand("volver al menu");	
+		}
+		
+		return btnVolverAlMen;
 	}
 }

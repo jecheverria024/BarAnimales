@@ -41,6 +41,7 @@ public class VentanaInicioJuego extends JFrame {
 	private JLabel lblInsertaPassword;
 	private JPasswordField textField_1;
 	private JButton btnRegistrarse;
+	private JButton btnRanking;
 
 	/**
 	 * Launch the application.
@@ -81,6 +82,7 @@ public class VentanaInicioJuego extends JFrame {
 			panel.add(getBtnJugar());
 			panel.add(getBtnSalir());
 			panel.add(getBtnRegistrarse());
+			panel.add(getBtnRanking());
 			
 		}
 		return panel;
@@ -227,6 +229,10 @@ public class VentanaInicioJuego extends JFrame {
 				VentanaRegistro frame3=new VentanaRegistro();
 				frame3.setVisible(true);
 				dispose();
+			}else if(action.equals("Ranking")) {
+				Ranking frame4= new Ranking();
+				frame4.setVisible(true);
+				dispose();
 			}
 
 		}
@@ -243,5 +249,13 @@ public class VentanaInicioJuego extends JFrame {
 
 		}
 
+	}
+	private JButton getBtnRanking() {
+		if (btnRanking == null) {
+			btnRanking = new JButton("Ranking");
+			btnRanking.addActionListener(new Controlador());
+			btnRanking.setActionCommand("Ranking");
+		}
+		return btnRanking;
 	}
 	}
