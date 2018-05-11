@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import packBD.BD;
+import packBD.GestorBD;
 
 public class GestorRanking {
 	private static GestorRanking theGestorRanking;
@@ -19,12 +20,14 @@ public class GestorRanking {
 	}
 	/*pasa los parametros al gestorBD */
 	public void almacenarRanking(String nombre,  int puntuacion) throws SQLException {
-			BD.getGestorBD().almacenarRanking(nombre,puntuacion );
+			GestorBD.getGestorBD().almacenarRanking(nombre,puntuacion );
 	}
 	
+	/*
 	public JSONArray  getRanking() throws JSONException {
-		JSONArray json= BD.getGestorBD().obtenerPuntuacion("SELECT * FROM Usuarios ORDER BY Puntuacion DESC LIMIT 10");	
-		return json;
+		//JSONArray json= GestorBD.getGestorBD().obtenerPuntuacion("SELECT * FROM Usuario ORDER BY Puntuacion DESC LIMIT 10");	
+		//return json;
 	}
+	*/
 }
 
