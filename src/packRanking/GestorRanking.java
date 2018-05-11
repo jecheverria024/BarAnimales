@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import packBD.BD;
 import packBD.GestorBD;
 
 public class GestorRanking {
