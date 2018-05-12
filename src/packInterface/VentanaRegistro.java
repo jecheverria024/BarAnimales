@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
+
+import packBD.GestorBD;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -260,6 +263,15 @@ public class VentanaRegistro extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			String action=e.getActionCommand();
 			if(action.equals("Aceptar")){ //llamar para hacer el registro y llevarlo a la ventana de incio de juego 
+				String contra=textField_1.getText();
+				String contra2=textField_2.getText();
+				String usu=textField.getText();
+				if(this.comprobarPassIguales(contra, contra2)){
+					GestorBD.getGestorBD().anadirUsuario(usu, contra);
+				}else{
+					JFrame frame = new JFrame( "Error");
+					JOptionPane.showMessageDialog(frame, "Las Passwords no coinciden");
+				}
 				
 			}else if(action.equals("Salir")){
 				cerrar();
@@ -276,6 +288,13 @@ public class VentanaRegistro extends JFrame {
 
 			}
 
+		}
+		public boolean comprobarPassIguales(String pass1, String pass2){
+			if(pass1.equals(pass2)){
+				return true;
+			}else{
+				return false;
+			}
 		}
 		
 	}

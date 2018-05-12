@@ -16,11 +16,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import net.ucanaccess.jdbc.UcanaccessSQLException;
+
 public class GestorBD {
 	private static GestorBD miGestorBd;
 	// DATOS PARA EL ACCESO DE LA BD
 	private Statement Instruccion;
-	private ResultSet Resultado;
+	private ResultSet Resultado; 
 	private String SentenciaSQL;
 	private Connection con = null;
 	private String driver = "net.ucanaccess.jdbc.UcanaccessDriver";
@@ -42,7 +44,7 @@ public class GestorBD {
 			if (con == null) {
 				Class.forName(driver);
 				con = DriverManager.getConnection(url);
-				JOptionPane.showMessageDialog(null, "Conexión correcta.");
+				JOptionPane.showMessageDialog(null, "Conexiï¿½n correcta.");
 			}
 		} catch (SQLException SQLE) {
 			JOptionPane.showMessageDialog(null, "ERROR EN LA CONEXION CON BD\nERROR : " + SQLE.getMessage());
@@ -78,6 +80,29 @@ public class GestorBD {
 					"ERROR AL INSERTAR LA PUNTUACION DE LA BD \n ERROR : " + SQLE.getMessage());
 		}
 		
+	}
+	
+	
+	public boolean comprobarLoggin(String usu, String pass) {
+		con =abrirConexion();
+		boolean correcto=false;
+		String respuesta = " ";
+		try {
+			PreparedStatement pst = con
+					.prepareStatement("SELECT Password FROM Usuario WHERE Username= ? ");
+			pst.setString(1, usu);
+			ResultSet rs=pst.executeQuery();
+			//respuesta=rs.getString(0);
+			if(respuesta.equals(pass)){
+				correcto=true;
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return correcto;
 	}
 	
 	/*

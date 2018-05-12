@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
+import net.ucanaccess.jdbc.UcanaccessSQLException;
+import packBD.GestorBD;
 import packModelo.BarBestial;
 
 import java.awt.FlowLayout;
@@ -212,19 +214,31 @@ public class VentanaInicioJuego extends JFrame {
 				String contra=textField_1.getText();
 				String usu=textField.getText();
 				System.out.println("contra "+contra+" usu "+usu);
-				VentanaPartida frame2 = new VentanaPartida();
-				Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-				Dimension frameSize = frame2.getSize(); //Tama�o del frame actual (ancho x alto)
-				if (frameSize.height > screenSize.height) {
-				frameSize.height = screenSize.height;
+				boolean resultado = false;
+				
+				resultado = GestorBD.getGestorBD().comprobarLoggin(usu, contra);
+			
+					
+				
+				if(resultado){
+					VentanaPartida frame2 = new VentanaPartida();
+					Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+					Dimension frameSize = frame2.getSize(); //Tama�o del frame actual (ancho x alto)
+					if (frameSize.height > screenSize.height) {
+					frameSize.height = screenSize.height;
+					}
+					if (frameSize.width > screenSize.width) {
+					frameSize.width = screenSize.width;
+					}
+					frame2.setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
+					frame2.setExtendedState(MAXIMIZED_BOTH);
+					frame2.setVisible(true);
+					dispose();
+				}else{
+					JFrame frame = new JFrame( "Estas Registrado?");
+					JOptionPane.showMessageDialog(frame, "Error al introducir el nombre de Usuario o contraseña");
 				}
-				if (frameSize.width > screenSize.width) {
-				frameSize.width = screenSize.width;
-				}
-				frame2.setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
-				frame2.setExtendedState(MAXIMIZED_BOTH);
-				frame2.setVisible(true);
-				dispose();
+				
 			} else if (action.equals("Salir")) {
 				cerrar();
 			}
