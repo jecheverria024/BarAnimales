@@ -128,22 +128,18 @@ public class GestorBD {
 
 		return correcto;
 	}
-	/*
-	 * OBTENER RANKING public JSONArray obtenerPuntuacion(String sql) throws
-	 * JSONException { JSONArray json=new JSONArray(); try { Statement sentencia =
-	 * (Statement) getConexion().createStatement(ResultSet.TYPE_FORWARD_ONLY,
-	 * ResultSet.CONCUR_READ_ONLY); ResultSet resultado=sentencia.executeQuery(sql);
-	 * ResultSetMetaData rsmd =resultado.getMetaData(); resultado.beforeFirst();
-	 * while(resultado.next()) { int numCol=rsmd.getColumnCount(); JSONObject obj =
-	 * new JSONObject(); for(int i=1; i<numCol+1; i++) { String column_name =
-	 * rsmd.getColumnLabel(i); switch( rsmd.getColumnType( i ) ) { case
-	 * java.sql.Types.INTEGER: obj.put(column_name, resultado.getInt(column_name));
-	 * break; case java.sql.Types.VARCHAR: obj.put(column_name,
-	 * resultado.getString(column_name)); break; } } json.put(obj); }
-	 * 
-	 * } catch (SQLException ex) {
-	 * 
-	 * System.out.println("SQLException: " + ex.getMessage()); } return json; }
-	 */
+	
+	public ResultSet obtenerPuntuacion(String sql) throws JSONException {
+		try {
+			PreparedStatement pst = abrirConexion().prepareStatement(sql);
+			return pst.executeQuery();	
+
+		} catch (SQLException ex) {
+			System.out.println("1");
+
+			System.out.println("SQLException: " + ex.getMessage());
+			return null;
+		}
+	}
 
 }

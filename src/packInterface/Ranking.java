@@ -76,7 +76,7 @@ public class Ranking extends JFrame {
 		contentPane.add(getPanel_1(), BorderLayout.SOUTH);		
 		contentPane.add(getPanel_2(), BorderLayout.CENTER);
 		cargarPanel(panel_2);
-		//this.cargarResultados();
+		this.cargarResultados();
 	}
 	private void limpiarTextField() {
 		for (int x = 1; x < textField.length; x++) {
@@ -92,8 +92,8 @@ public class Ranking extends JFrame {
 					for (int y = 0; y < json.length(); y++) {								
 						JSONObject objeto = json.getJSONObject(y);
 						textField[y+1][0].setText(String.valueOf(y+1));
-						textField[y+1][1].setText(objeto.getString("nombre"));
-						textField[y+1][2].setText(String.valueOf(objeto.getInt("puntuacion")));
+						textField[y+1][1].setText(objeto.getString("Username"));
+						textField[y+1][2].setText(String.valueOf(objeto.getInt("Puntuacion")));
 				}
 				panel.updateUI();					
 		} 
@@ -144,6 +144,10 @@ public class Ranking extends JFrame {
 				panel.add(textField[x][y]);
 			}
 		}
+		textField[0][0].setText("Posicion");
+		textField[0][1].setText("Usuario");
+		textField[0][2].setText("Puntuacion");
+
 	}
 	
 	private class Controlador extends WindowAdapter implements ActionListener{
