@@ -129,7 +129,7 @@ public class GestorBD {
 		return correcto;
 	}
 	
-	public ResultSet obtenerPuntuacion(String sql) throws JSONException {
+	public ResultSet execSQL(String sql) throws JSONException {
 		try {
 			PreparedStatement pst = abrirConexion().prepareStatement(sql);
 			return pst.executeQuery();	
