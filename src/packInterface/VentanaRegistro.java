@@ -47,7 +47,7 @@ public class VentanaRegistro extends JFrame {
 	private JPanel panel_13;
 	private JLabel lblConfirmarContrasea;
 	private JPasswordField textField_2;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -56,7 +56,7 @@ public class VentanaRegistro extends JFrame {
 			public void run() {
 				try {
 					VentanaRegistro frame = new VentanaRegistro();
-					//frame.setVisible(true);
+					// frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -86,6 +86,7 @@ public class VentanaRegistro extends JFrame {
 		}
 		return panel;
 	}
+
 	private JLabel getLblRegistrarse() {
 		if (lblRegistrarse == null) {
 			lblRegistrarse = new JLabel("Registrarse");
@@ -93,6 +94,7 @@ public class VentanaRegistro extends JFrame {
 		}
 		return lblRegistrarse;
 	}
+
 	private JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
@@ -102,6 +104,7 @@ public class VentanaRegistro extends JFrame {
 		}
 		return panel_1;
 	}
+
 	private JButton getBtnAceptar() {
 		if (btnAceptar == null) {
 			btnAceptar = new JButton("Aceptar");
@@ -110,6 +113,7 @@ public class VentanaRegistro extends JFrame {
 		}
 		return btnAceptar;
 	}
+
 	private JButton getBtnSalir() {
 		if (btnSalir == null) {
 			btnSalir = new JButton("Salir");
@@ -118,6 +122,7 @@ public class VentanaRegistro extends JFrame {
 		}
 		return btnSalir;
 	}
+
 	private JPanel getPanel_2() {
 		if (panel_2 == null) {
 			panel_2 = new JPanel();
@@ -127,12 +132,14 @@ public class VentanaRegistro extends JFrame {
 		}
 		return panel_2;
 	}
+
 	private JPanel getPanel_3() {
 		if (panel_3 == null) {
 			panel_3 = new JPanel();
 		}
 		return panel_3;
 	}
+
 	private JPanel getPanel_4() {
 		if (panel_4 == null) {
 			panel_4 = new JPanel();
@@ -142,12 +149,14 @@ public class VentanaRegistro extends JFrame {
 		}
 		return panel_4;
 	}
+
 	private JPanel getPanel_5() {
 		if (panel_5 == null) {
 			panel_5 = new JPanel();
 		}
 		return panel_5;
 	}
+
 	private JPanel getPanel_6() {
 		if (panel_6 == null) {
 			panel_6 = new JPanel();
@@ -157,6 +166,7 @@ public class VentanaRegistro extends JFrame {
 		}
 		return panel_6;
 	}
+
 	private JPanel getPanel_7() {
 		if (panel_7 == null) {
 			panel_7 = new JPanel();
@@ -166,12 +176,14 @@ public class VentanaRegistro extends JFrame {
 		}
 		return panel_7;
 	}
+
 	private JLabel getLblInsertarNombreDe() {
 		if (lblInsertarNombreDe == null) {
 			lblInsertarNombreDe = new JLabel("Insertar nombre de usuario");
 		}
 		return lblInsertarNombreDe;
 	}
+
 	private JTextField getTextField() {
 		if (textField == null) {
 			textField = new JTextField();
@@ -179,6 +191,7 @@ public class VentanaRegistro extends JFrame {
 		}
 		return textField;
 	}
+
 	private JPanel getPanel_8() {
 		if (panel_8 == null) {
 			panel_8 = new JPanel();
@@ -188,6 +201,7 @@ public class VentanaRegistro extends JFrame {
 		}
 		return panel_8;
 	}
+
 	private JPanel getPanel_9() {
 		if (panel_9 == null) {
 			panel_9 = new JPanel();
@@ -195,6 +209,7 @@ public class VentanaRegistro extends JFrame {
 		}
 		return panel_9;
 	}
+
 	private JPanel getPanel_10() {
 		if (panel_10 == null) {
 			panel_10 = new JPanel();
@@ -204,6 +219,7 @@ public class VentanaRegistro extends JFrame {
 		}
 		return panel_10;
 	}
+
 	private JPanel getPanel_11() {
 		if (panel_11 == null) {
 			panel_11 = new JPanel();
@@ -213,12 +229,14 @@ public class VentanaRegistro extends JFrame {
 		}
 		return panel_11;
 	}
+
 	private JLabel getLblInsertarContrasea() {
 		if (lblInsertarContrasea == null) {
 			lblInsertarContrasea = new JLabel("Insertar Contraseña");
 		}
 		return lblInsertarContrasea;
 	}
+
 	private JPasswordField getTextField_1() {
 		if (textField_1 == null) {
 			textField_1 = new JPasswordField();
@@ -226,6 +244,7 @@ public class VentanaRegistro extends JFrame {
 		}
 		return textField_1;
 	}
+
 	private JPanel getPanel_12() {
 		if (panel_12 == null) {
 			panel_12 = new JPanel();
@@ -234,6 +253,7 @@ public class VentanaRegistro extends JFrame {
 		}
 		return panel_12;
 	}
+
 	private JPanel getPanel_13() {
 		if (panel_13 == null) {
 			panel_13 = new JPanel();
@@ -243,12 +263,14 @@ public class VentanaRegistro extends JFrame {
 		}
 		return panel_13;
 	}
+
 	private JLabel getLblConfirmarContrasea() {
 		if (lblConfirmarContrasea == null) {
 			lblConfirmarContrasea = new JLabel("Confirmar Contraseña");
 		}
 		return lblConfirmarContrasea;
 	}
+
 	private JPasswordField getTextField_2() {
 		if (textField_2 == null) {
 			textField_2 = new JPasswordField();
@@ -256,31 +278,37 @@ public class VentanaRegistro extends JFrame {
 		}
 		return textField_2;
 	}
-	
-	private class ControladorRegistro extends WindowAdapter implements ActionListener{
+
+	private class ControladorRegistro extends WindowAdapter implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String action=e.getActionCommand();
-			if(action.equals("Aceptar")){ //llamar para hacer el registro y llevarlo a la ventana de incio de juego 
-				String contra=textField_1.getText();
-				String contra2=textField_2.getText();
-				String usu=textField.getText();
-				if(this.comprobarPassIguales(contra, contra2)){
-					GestorBD.getGestorBD().anadirUsuario(usu, contra);
-					VentanaInicioJuego frame=new VentanaInicioJuego();
-					frame.setVisible(true);
-					dispose();
-				}else{
-					JFrame frame = new JFrame( "Error");
-					JOptionPane.showMessageDialog(frame, "Las Passwords no coinciden");
+			String action = e.getActionCommand();
+			if (action.equals("Aceptar")) { // llamar para hacer el registro y llevarlo a la ventana de incio de juego
+				String contra = textField_1.getText();
+				String contra2 = textField_2.getText();
+				String usu = textField.getText();
+				if (comprobarNoExiste(usu)) {
+					if (this.comprobarPassIguales(contra, contra2)) {
+						GestorBD.getGestorBD().anadirUsuario(usu, contra);
+						VentanaInicioJuego frame = new VentanaInicioJuego();
+						frame.setVisible(true);
+						dispose();
+					} else {
+						JFrame frame = new JFrame("Error");
+						JOptionPane.showMessageDialog(frame, "Las Passwords no coinciden");
+					}
+				} else {
+					JFrame frame = new JFrame("Error");
+					JOptionPane.showMessageDialog(frame, "El usuario ya existe");
 				}
-				
-			}else if(action.equals("Salir")){
+
+			} else if (action.equals("Salir")) {
 				cerrar();
 			}
-			
+
 		}
+
 		public void cerrar() {
 			Object[] options = { "ACEPTAR", "CANCELAR" };
 			int eleccion = JOptionPane.showOptionDialog(rootPane, "Quieres cerrar la aplicacion?", "Confirmar Cierre",
@@ -292,13 +320,18 @@ public class VentanaRegistro extends JFrame {
 			}
 
 		}
-		public boolean comprobarPassIguales(String pass1, String pass2){
-			if(pass1.equals(pass2)){
+
+		public boolean comprobarPassIguales(String pass1, String pass2) {
+			if (pass1.equals(pass2)) {
 				return true;
-			}else{
+			} else {
 				return false;
 			}
 		}
-		
+
+		private boolean comprobarNoExiste(String pUsu) {
+			return GestorBD.getGestorBD().comprobarNoExiste(pUsu);
+		}
+
 	}
 }
