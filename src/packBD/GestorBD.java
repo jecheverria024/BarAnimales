@@ -22,7 +22,7 @@ public class GestorBD {
 	private static GestorBD miGestorBd;
 	// DATOS PARA EL ACCESO DE LA BD
 	private Statement Instruccion;
-	private ResultSet Resultado; 
+	private ResultSet Resultado;
 	private String SentenciaSQL;
 	private Connection con = null;
 	private String driver = "net.ucanaccess.jdbc.UcanaccessDriver";
@@ -44,7 +44,7 @@ public class GestorBD {
 			if (con == null) {
 				Class.forName(driver);
 				con = DriverManager.getConnection(url);
-				JOptionPane.showMessageDialog(null, "Conexi�n correcta.");
+				JOptionPane.showMessageDialog(null, "Conexiï¿½n correcta.");
 			}
 		} catch (SQLException SQLE) {
 			JOptionPane.showMessageDialog(null, "ERROR EN LA CONEXION CON BD\nERROR : " + SQLE.getMessage());
@@ -53,24 +53,23 @@ public class GestorBD {
 		}
 		return con;
 	}
-	
+
 	public void anadirUsuario(String usu, String pass) {
 		con = abrirConexion();
-		try {			
+		try {
 			PreparedStatement pst = con
-					.prepareStatement("INSERT INTO Usuario(Username,Password) VALUES ('"+usu+"','"+pass+"')");
+					.prepareStatement("INSERT INTO Usuario(Username,Password) VALUES ('" + usu + "','" + pass + "')");
 			pst.executeUpdate();
 			JOptionPane.showMessageDialog(null, "El usuario se agrego correctamente");
 		} catch (SQLException SQLE) {
-			JOptionPane.showMessageDialog(null,
-					"Error al insertar usuario \n ERROR : " + SQLE.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al insertar usuario \n ERROR : " + SQLE.getMessage());
 		}
 	}
+
 	public void almacenarRanking(String nombre, int puntuacion) throws SQLException {
 		con = abrirConexion();
-		try {			
-			PreparedStatement pst = con
-					.prepareStatement("UPDATE Usuario SET Puntuacion=? WHERE Username=?");
+		try {
+			PreparedStatement pst = con.prepareStatement("UPDATE Usuario SET Puntuacion=? WHERE Username=?");
 			pst.setInt(1, puntuacion);
 			pst.setString(2, nombre);
 			pst.executeUpdate();
@@ -79,70 +78,72 @@ public class GestorBD {
 			JOptionPane.showMessageDialog(null,
 					"ERROR AL INSERTAR LA PUNTUACION DE LA BD \n ERROR : " + SQLE.getMessage());
 		}
-		
+
 	}
-	
-	
+
 	public boolean comprobarLoggin(String usu, String pass) {
-		con =abrirConexion();
-		boolean correcto=false;
+		con = abrirConexion();
+		boolean correcto = false;
 		String respuesta = " ";
 		try {
-			PreparedStatement pst = con
-					.prepareStatement("SELECT Password FROM Usuario WHERE Username= ? ");
+			PreparedStatement pst = con.prepareStatement("SELECT Password FROM Usuario WHERE Username= ? ");
 			pst.setString(1, usu);
-			ResultSet rs=pst.executeQuery();
-			while(rs.next()){
-				
-				respuesta=rs.getString("Password");
+			ResultSet rs = pst.executeQuery();
+			System.out.println("El valor del result set es: ");
+			rs.next();
+			rs.getString("Password");
+
+			// respuesta=rs.getString(num);
+			if (rs.getString("Password").equals(pass)) {
+				correcto = true;
 			}
-			
-			
-			//respuesta=rs.getString(num);
-			if(respuesta.equals(pass)){
-				correcto=true;
-			}
-			
+
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		}
-		
+
 		return correcto;
 	}
-	
-	/*
-	 * OBTENER RANKING
-	 * public JSONArray  obtenerPuntuacion(String sql) throws JSONException {
-		JSONArray json=new JSONArray();
+
+	public boolean comprobarNoExiste(String usu) {
+		con = abrirConexion();
+		boolean correcto = false;
+		String respuesta = " ";
 		try {
-			Statement sentencia = (Statement) getConexion().createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
-			ResultSet resultado=sentencia.executeQuery(sql);	
-			ResultSetMetaData rsmd =resultado.getMetaData();
-			resultado.beforeFirst();
-			while(resultado.next()) {
-				int numCol=rsmd.getColumnCount();
-				JSONObject obj = new JSONObject();
-				for(int i=1; i<numCol+1; i++) {
-	                String column_name = rsmd.getColumnLabel(i); 
-	                switch( rsmd.getColumnType( i ) ) {
-		                case java.sql.Types.INTEGER:
-		                    obj.put(column_name, resultado.getInt(column_name));
-		                    break;
-		                case java.sql.Types.VARCHAR:
-	                        obj.put(column_name, resultado.getString(column_name));   
-	                        break;
-		                }
-				}
-				json.put(obj);				
+			PreparedStatement pst = con.prepareStatement("SELECT * FROM Usuario WHERE Username= ? ");
+			pst.setString(1, usu);
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				System.out.println("existe");
+				return false;
 			}
+			System.out.println("no existe");
+			return true;
 
-		} catch (SQLException ex) {
+		} catch (SQLException e) {
 
-			System.out.println("SQLException: " + ex.getMessage());
-		}		
-		 return json;
+			e.printStackTrace();
+		}
+
+		return correcto;
 	}
-	 * */
+	/*
+	 * OBTENER RANKING public JSONArray obtenerPuntuacion(String sql) throws
+	 * JSONException { JSONArray json=new JSONArray(); try { Statement sentencia =
+	 * (Statement) getConexion().createStatement(ResultSet.TYPE_FORWARD_ONLY,
+	 * ResultSet.CONCUR_READ_ONLY); ResultSet resultado=sentencia.executeQuery(sql);
+	 * ResultSetMetaData rsmd =resultado.getMetaData(); resultado.beforeFirst();
+	 * while(resultado.next()) { int numCol=rsmd.getColumnCount(); JSONObject obj =
+	 * new JSONObject(); for(int i=1; i<numCol+1; i++) { String column_name =
+	 * rsmd.getColumnLabel(i); switch( rsmd.getColumnType( i ) ) { case
+	 * java.sql.Types.INTEGER: obj.put(column_name, resultado.getInt(column_name));
+	 * break; case java.sql.Types.VARCHAR: obj.put(column_name,
+	 * resultado.getString(column_name)); break; } } json.put(obj); }
+	 * 
+	 * } catch (SQLException ex) {
+	 * 
+	 * System.out.println("SQLException: " + ex.getMessage()); } return json; }
+	 */
 
 }
