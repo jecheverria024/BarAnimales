@@ -9,6 +9,7 @@ import packModelo.packCartas.EsLoQueHay;
 //import packModelo.packBarcos.BarcoNoEncException;
 import packModelo.packCartas.ListaCartas;
 import packModelo.packCartas.PuertaDelCielo;
+import packRanking.GestorRanking;
 import packModelo.Usuario.Jugador;
 
 public class BarBestial {
@@ -93,7 +94,16 @@ public class BarBestial {
 		EsLoQueHay.getEsLoQueHay().imprimir();
 		PuertaDelCielo.getPuertaDelCielo().imprimir();
 		ColaEntrada.getColaEntrada().imprimir();
+		int puntos=100; //AQUI PONER EL METODO PARA CALCULAR PUNTOS 
+		this.almacenarRanking(puntos);
 	}
+
+	private void almacenarRanking(int puntos) {
+		this.jugador.almacenarRanking(puntos);
+		
+	}
+
+	
 
 	private void imprimirmazo() {
 		System.out.println("jugador");
