@@ -17,11 +17,11 @@ public class ACamaleon implements IAnimalada {
 			if(!ColaEntrada.getColaEntrada().colaVacia() ) {
 				while(!correcto) {
 					try {
-						pPos=Integer.parseInt(JOptionPane.showInputDialog(frame, "Introduzca posicion en la cola"));	    		
+						pPos=Integer.parseInt(JOptionPane.showInputDialog(frame, "Introduzca posicion en la cola","Camaleon", JOptionPane.INFORMATION_MESSAGE));	    		
 					}
 					catch(Exception e) {
 						
-						JOptionPane.showMessageDialog(frame, "Introduzca un numero valido, por favor");
+						JOptionPane.showMessageDialog(frame, "Introduzca un numero valido, por favor","Camaleon", JOptionPane.INFORMATION_MESSAGE);
 					}
 			    	if(ColaEntrada.getColaEntrada().comprobarLongitudCartas(pPos) && pPos>0) {
 			    		correcto=true;
@@ -32,7 +32,7 @@ public class ACamaleon implements IAnimalada {
 				
 			}
 			else {
-				JOptionPane.showMessageDialog(frame, "No hay elementos en la cola para elegir");
+				JOptionPane.showMessageDialog(frame, "No hay elementos en la cola para elegir","Camaleon", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 		else {

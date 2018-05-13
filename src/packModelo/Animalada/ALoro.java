@@ -19,11 +19,11 @@ public class ALoro implements IAnimalada {
 			if(!ColaEntrada.getColaEntrada().colaVacia() ) {
 				while(!correcto) {
 					try {
-						pPos=Integer.parseInt(JOptionPane.showInputDialog(frame, "Introduzca posicion en la cola"));	    		
+						pPos=Integer.parseInt(JOptionPane.showInputDialog(frame, "Introduzca posicion en la cola","Loro", JOptionPane.INFORMATION_MESSAGE));	    		
 					}
 					catch(Exception e) {
 						
-						JOptionPane.showMessageDialog(frame, "Introduzca un numero valido, por favor");
+						JOptionPane.showMessageDialog(frame, "Introduzca un numero valido, por favor","Loro", JOptionPane.INFORMATION_MESSAGE);
 					}
 			    	if(ColaEntrada.getColaEntrada().comprobarLongitudCartas(pPos) && pPos>0) {
 			    		correcto=true;
@@ -34,7 +34,7 @@ public class ALoro implements IAnimalada {
 				
 			}
 			else {
-				JOptionPane.showMessageDialog(frame, "No hay elementos en la cola para elegir");
+				JOptionPane.showMessageDialog(frame, "No hay elementos en la cola para elegir","Loro", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 		else {

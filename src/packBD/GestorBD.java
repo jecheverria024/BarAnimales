@@ -44,12 +44,12 @@ public class GestorBD {
 			if (con == null) {
 				Class.forName(driver);
 				con = DriverManager.getConnection(url);
-				JOptionPane.showMessageDialog(null, "Conexiï¿½n correcta.");
+				System.out.println("conexion bd correcta ");
 			}
 		} catch (SQLException SQLE) {
-			JOptionPane.showMessageDialog(null, "ERROR EN LA CONEXION CON BD\nERROR : " + SQLE.getMessage());
+			System.out.println("ERROR EN LA CONEXION CON BD\nERROR : " + SQLE.getMessage());
 		} catch (ClassNotFoundException CNFE) {
-			JOptionPane.showMessageDialog(null, "ERROR DRIVER BD JAVA\nERROR : " + CNFE.getMessage());
+			System.out.println( "ERROR DRIVER BD JAVA\nERROR : " + CNFE.getMessage());
 		}
 		return con;
 	}
@@ -60,9 +60,9 @@ public class GestorBD {
 			PreparedStatement pst = con
 					.prepareStatement("INSERT INTO Usuario(Username,Password) VALUES ('" + usu + "','" + pass + "')");
 			pst.executeUpdate();
-			JOptionPane.showMessageDialog(null, "El usuario se agrego correctamente");
+			System.out.println("el usuario se agrego correctamente");
 		} catch (SQLException SQLE) {
-			JOptionPane.showMessageDialog(null, "Error al insertar usuario \n ERROR : " + SQLE.getMessage());
+			System.out.println("Error al insertar usuario \n ERROR : " + SQLE.getMessage());
 		}
 	}
 
@@ -73,10 +73,9 @@ public class GestorBD {
 			pst.setInt(1, puntuacion);
 			pst.setString(2, nombre);
 			pst.executeUpdate();
-			JOptionPane.showMessageDialog(null, "LA PUNTUACION SE AGREGO CON EXITO A LA BD");
+			System.out.println("LA PUNTUACION SE AGREGO CON EXITO A LA BD");
 		} catch (SQLException SQLE) {
-			JOptionPane.showMessageDialog(null,
-					"ERROR AL INSERTAR LA PUNTUACION DE LA BD \n ERROR : " + SQLE.getMessage());
+			System.out.println("ERROR AL INSERTAR LA PUNTUACION DE LA BD \n ERROR : " + SQLE.getMessage());
 		}
 
 	}
@@ -136,7 +135,6 @@ public class GestorBD {
 
 		} catch (SQLException ex) {
 			System.out.println("1");
-
 			System.out.println("SQLException: " + ex.getMessage());
 			return null;
 		}

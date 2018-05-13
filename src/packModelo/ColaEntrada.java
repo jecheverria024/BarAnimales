@@ -3,6 +3,9 @@ package packModelo;
 import java.util.Arrays;
 import java.util.Collections;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import packInterface.VentanaPrincipal;
 import packModelo.packCartas.CartaAnimal;
 import packModelo.packCartas.EsLoQueHay;
@@ -30,6 +33,8 @@ public class ColaEntrada extends ObservableAbstracto {
 	private boolean revisarCola() {
 		boolean lleno = comprobarColaCompleta();
 		if (lleno) {
+			JFrame frame = new JFrame("Cola de Entrada");
+			JOptionPane.showMessageDialog(frame, "Dos animales entran al bar!","Cola de entrada", JOptionPane.INFORMATION_MESSAGE);
 			cartas.dosPrimeras();
 			cartas.ultimaCarta();
 		}
@@ -64,12 +69,7 @@ public class ColaEntrada extends ObservableAbstracto {
 
 	public void echarCarta(CartaAnimal pCarta) {
 		cartas.add(pCarta);
-		// En el if poner los animales que tengan las animaladas implementadas. mantener
-		// este if hasta que esten todas las animaladas hechas
-		//if (pCarta.getFuerza() == 3 ) {
-			pCarta.ejecutarAnimalada();
-
-		//}
+		pCarta.ejecutarAnimalada();
 		this.revisar(pCarta);
 
 	}

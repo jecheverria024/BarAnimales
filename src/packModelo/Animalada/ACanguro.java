@@ -24,11 +24,11 @@ public void hacerAnimalada(int pFuerza, String pColor) {
 			if(!ColaEntrada.getColaEntrada().colaVacia() ) {
 				while(!correcto) {
 					try {
-						pPos=Integer.parseInt(JOptionPane.showInputDialog(frame, "Introduzca posicion en la cola"));	    		
+						pPos=Integer.parseInt(JOptionPane.showInputDialog(frame, "Introduzca posicion en la cola","Canguro", JOptionPane.INFORMATION_MESSAGE));	    		
 					}
 					catch(Exception e) {
 						
-						JOptionPane.showMessageDialog(frame, "Introduzca un numero valido, por favor");
+						JOptionPane.showMessageDialog(frame, "Introduzca un numero valido, por favor","Canguro", JOptionPane.INFORMATION_MESSAGE);
 					}
 			    	if(ColaEntrada.getColaEntrada().comprobarLongitudCartas(pPos) && pPos>0) {
 			    		if(pPos==1 || pPos==2) {
@@ -39,7 +39,7 @@ public void hacerAnimalada(int pFuerza, String pColor) {
 				
 			}
 			else {
-				JOptionPane.showMessageDialog(frame, "No hay elementos en la cola para elegir");
+				JOptionPane.showMessageDialog(frame, "No hay elementos en la cola para elegir","Canguro", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}else{
 			if(!ColaEntrada.getColaEntrada().colaVacia() ){

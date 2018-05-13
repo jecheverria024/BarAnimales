@@ -6,10 +6,11 @@ import packModelo.Animal.AnimalFactory;
 import packModelo.Animal.IRecurrente;
 
 public class CartaAnimal extends CartaGeneral implements Comparable<CartaAnimal> {
+	private boolean camaleon=false;
 	private int fuerza;
 	private EnumColor color;
 	private Animal animal;
-
+	
 	public CartaAnimal(String pImagen, int pFuerza, EnumColor pColor, Animal a) {
 		// TODO Auto-generated constructor stub
 		super(pImagen);
@@ -17,6 +18,10 @@ public class CartaAnimal extends CartaGeneral implements Comparable<CartaAnimal>
 		fuerza = pFuerza;
 		color = pColor;
 		animal = a;
+		
+		if(pFuerza==5) {
+			camaleon=true;
+		}
 	}
 
 	public int getFuerza() {
@@ -69,22 +74,20 @@ public class CartaAnimal extends CartaGeneral implements Comparable<CartaAnimal>
 		else return false;
 	}
 	public boolean esCamaleon() {
-		if(this.fuerza==5) {
-			return true;
-		}
-		else return false;
+		return camaleon;
 	}
 
 	public void ejecutarAnimaladaOtroAnimal(int pFuerza) {
 		this.animal=AnimalFactory.getAnimalFactory().crearAnimal(pFuerza);
-		this.fuerza=pFuerza;
-		
-			this.ejecutarAnimalada();
+		this.fuerza=pFuerza;		
+		this.animal.ejecutarAnimalada(pFuerza, color.name());
+		System.out.println("EJECUTA ANIMALADA OTRO CAMALEON");
 		
 	}
 	public void volverASerCamaleon() {
 		this.animal=AnimalFactory.getAnimalFactory().crearAnimal(5);
 		this.fuerza=5;
+		System.out.println("VOLVER A SER CAMALEON");
 	}
 	
 	public boolean esColor(EnumColor pColor) {

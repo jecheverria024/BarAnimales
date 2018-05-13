@@ -2,6 +2,9 @@ package packModelo;
 
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import packModelo.Usuario.Jugador;
 import packModelo.Usuario.Ordenador;
 import packModelo.packCartas.CartaAnimal;
@@ -53,7 +56,9 @@ public class BarBestial {
 
 		cambiarTurno();
 		if (ordenador.tieneCartas()) {
-
+			JFrame frame = new JFrame("Ordenador");
+			JOptionPane.showMessageDialog(frame, "Turno del ordenador","Ordenador", JOptionPane.INFORMATION_MESSAGE);
+	
 			ordenador.jugar();
 
 			cambiarTurno();
@@ -89,8 +94,8 @@ public class BarBestial {
 	}
 
 	private void finalizarPartida() {
-		System.out.println("El ganador es " + PuertaDelCielo.getPuertaDelCielo().calcularGanador());
-		System.out.println("PARTIDA FINALIZADA");
+		JFrame frame = new JFrame("PARTIDA FINALIZADA");
+		JOptionPane.showMessageDialog(frame, "El ganador es " + PuertaDelCielo.getPuertaDelCielo().calcularGanador());
 		EsLoQueHay.getEsLoQueHay().imprimir();
 		PuertaDelCielo.getPuertaDelCielo().imprimir();
 		ColaEntrada.getColaEntrada().imprimir();

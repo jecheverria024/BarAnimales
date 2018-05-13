@@ -232,7 +232,7 @@ public class VentanaRegistro extends JFrame {
 
 	private JLabel getLblInsertarContrasea() {
 		if (lblInsertarContrasea == null) {
-			lblInsertarContrasea = new JLabel("Insertar Contraseña");
+			lblInsertarContrasea = new JLabel("Insertar password");
 		}
 		return lblInsertarContrasea;
 	}
@@ -266,7 +266,7 @@ public class VentanaRegistro extends JFrame {
 
 	private JLabel getLblConfirmarContrasea() {
 		if (lblConfirmarContrasea == null) {
-			lblConfirmarContrasea = new JLabel("Confirmar Contraseña");
+			lblConfirmarContrasea = new JLabel("Confirmar password");
 		}
 		return lblConfirmarContrasea;
 	}

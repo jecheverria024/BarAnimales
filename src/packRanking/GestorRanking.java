@@ -28,7 +28,7 @@ public class GestorRanking {
 
 	
 	public JSONArray  getRanking() throws JSONException {
-		ResultSet rs= GestorBD.getGestorBD().obtenerPuntuacion("SELECT * FROM Usuario ORDER BY Puntuacion DESC LIMIT 10");	
+		ResultSet rs= GestorBD.getGestorBD().execSQL("SELECT * FROM Usuario ORDER BY Puntuacion DESC LIMIT 10");	
 		JSONArray json = new JSONArray();
 		try {
 			ResultSetMetaData rsmd =rs.getMetaData();

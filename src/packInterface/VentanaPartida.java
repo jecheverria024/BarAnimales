@@ -260,6 +260,8 @@ public class VentanaPartida extends JFrame implements IObserver {
 			this.manoJugador.repaint();
 			System.out.println("mano jugador");
 		}
+	
+
 	}
 
 	private JPanel getManoJugador() {
