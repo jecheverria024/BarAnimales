@@ -45,23 +45,11 @@ public class VentanaPartida extends JFrame implements IObserver {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaPartida frame = new VentanaPartida();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public VentanaPartida() {
+	public VentanaPartida(String pJugador) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -73,9 +61,9 @@ public class VentanaPartida extends JFrame implements IObserver {
 		contentPane.add(getColaEntrada(), BorderLayout.CENTER);
 		contentPane.add(getManoJugador(), BorderLayout.SOUTH);
 		ColaEntrada.getColaEntrada().registrarObservador(this);
-		BarBestial.getBarBestial().iniciarPartida();
+		BarBestial.getBarBestial().iniciarPartida(pJugador);
 		BarBestial.getBarBestial().getJugador().registrarObservador(this);
-		//this.actualizarCola(ColaEntrada.getColaEntrada().infoCartas());
+		// this.actualizarCola(ColaEntrada.getColaEntrada().infoCartas());
 		this.actualizarMano(BarBestial.getBarBestial().infoMano());
 
 	}
@@ -93,9 +81,9 @@ public class VentanaPartida extends JFrame implements IObserver {
 		cola[4] = new JLabel();
 		System.out.println(info);
 		String[] parts = info.split(" ");
-		for (int i = 0; i < parts.length/2; i++) {
-			int fuerza=Integer.parseInt(parts[i*2]);
-			Color color=this.getColor(parts[i*2+1]);
+		for (int i = 0; i < parts.length / 2; i++) {
+			int fuerza = Integer.parseInt(parts[i * 2]);
+			Color color = this.getColor(parts[i * 2 + 1]);
 			cola[i].setIcon(this.getImagen(fuerza));
 			cola[i].setBackground(color);
 			cola[i].setOpaque(true);
@@ -107,6 +95,7 @@ public class VentanaPartida extends JFrame implements IObserver {
 		colaEntrada.add(cola[3]);
 		colaEntrada.add(cola[4]);
 	}
+
 	public Color getColor(String c) {
 		Color color = null;
 		if (c.equals("AZUL")) {
@@ -120,6 +109,7 @@ public class VentanaPartida extends JFrame implements IObserver {
 		}
 		return color;
 	}
+
 	public ImageIcon getImagen(int pFuerza) {
 		ImageIcon imagen;
 		switch (pFuerza) {
@@ -205,11 +195,11 @@ public class VentanaPartida extends JFrame implements IObserver {
 			}
 		});
 		System.out.println(info);
-		if(info!=null) {
+		if (info != null) {
 			String[] parts = info.split(" ");
-			for (int i = 0; i < parts.length/2; i++) {
-				int fuerza=Integer.parseInt(parts[i*2]);
-				Color color=this.getColor(parts[i*2+1]);
+			for (int i = 0; i < parts.length / 2; i++) {
+				int fuerza = Integer.parseInt(parts[i * 2]);
+				Color color = this.getColor(parts[i * 2 + 1]);
 				mano[i].setIcon(this.getImagen(fuerza));
 				mano[i].setBackground(color);
 				mano[i].setOpaque(true);

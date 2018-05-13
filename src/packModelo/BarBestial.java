@@ -17,7 +17,8 @@ public class BarBestial {
 	private boolean juegoFinalizado;
 	private Jugador jugador;
 	private Ordenador ordenador;
-	private BarBestial() {	
+
+	private BarBestial() {
 	}
 
 	public static BarBestial getBarBestial() {
@@ -27,17 +28,19 @@ public class BarBestial {
 		return mBarBestial;
 	}
 
-	public void iniciarPartida() {
-		this.inicializarPartida();
+	public void iniciarPartida(String pJugador) {
+		this.inicializarPartida(pJugador);
 		this.repartirCartas();
 	}
+
 	public boolean esTurnoJugador() {
 		return turno;
 	}
-	private void inicializarPartida() {
+
+	private void inicializarPartida(String pJugador) {
 		ColaEntrada.getColaEntrada();
 		PuertaDelCielo.getPuertaDelCielo();
-		this.jugador = new Jugador(EnumColor.AZUL);
+		this.jugador = new Jugador(EnumColor.AZUL, pJugador);
 		this.ordenador = new Ordenador(EnumColor.VERDE);
 		turno = true;
 		juegoFinalizado = false;
@@ -46,25 +49,26 @@ public class BarBestial {
 
 	public boolean jugar(int pos) {
 		jugador.echarCarta(pos);
-		
+
 		cambiarTurno();
 		if (ordenador.tieneCartas()) {
-			
+
 			ordenador.jugar();
-			
+
 			cambiarTurno();
 		}
 		if (!jugador.tieneCartas() && !ordenador.tieneCartas()) {
 			this.finalizarPartida();
 			this.juegoFinalizado = true;
 		}
-	
+
 		return juegoFinalizado;
 	}
-	
+
 	private void cambiarTurno() {
-		turno=!turno;
+		turno = !turno;
 	}
+
 	private void repartirCartas() {
 		jugador.barajar();
 		ordenador.barajar();
@@ -74,22 +78,22 @@ public class BarBestial {
 		}
 	}
 
-	
 	// aqui hay dudas
 	public Jugador getJugador() {
 		return this.jugador;
 	}
+
 	public String infoMano() {
 		return this.jugador.infoMano();
 	}
+
 	private void finalizarPartida() {
-		System.out.println("El ganador es " +PuertaDelCielo.getPuertaDelCielo().calcularGanador());
+		System.out.println("El ganador es " + PuertaDelCielo.getPuertaDelCielo().calcularGanador());
 		System.out.println("PARTIDA FINALIZADA");
 		EsLoQueHay.getEsLoQueHay().imprimir();
 		PuertaDelCielo.getPuertaDelCielo().imprimir();
 		ColaEntrada.getColaEntrada().imprimir();
 	}
-	
 
 	private void imprimirmazo() {
 		System.out.println("jugador");

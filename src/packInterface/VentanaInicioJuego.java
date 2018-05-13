@@ -85,7 +85,7 @@ public class VentanaInicioJuego extends JFrame {
 			panel.add(getBtnSalir());
 			panel.add(getBtnRegistrarse());
 			panel.add(getBtnRanking());
-			
+
 		}
 		return panel;
 	}
@@ -117,6 +117,7 @@ public class VentanaInicioJuego extends JFrame {
 		}
 		return lblBarbestial;
 	}
+
 	private JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
@@ -126,6 +127,7 @@ public class VentanaInicioJuego extends JFrame {
 		}
 		return panel_1;
 	}
+
 	private JPanel getPanel_2() {
 		if (panel_2 == null) {
 			panel_2 = new JPanel();
@@ -135,12 +137,14 @@ public class VentanaInicioJuego extends JFrame {
 		}
 		return panel_2;
 	}
+
 	private JLabel getLblInsertaNombreDe() {
 		if (lblInsertaNombreDe == null) {
 			lblInsertaNombreDe = new JLabel("Inserta nombre de Usuario");
 		}
 		return lblInsertaNombreDe;
 	}
+
 	private JTextField getTextField_1() {
 		if (textField == null) {
 			textField = new JTextField();
@@ -148,6 +152,7 @@ public class VentanaInicioJuego extends JFrame {
 		}
 		return textField;
 	}
+
 	private JPanel getPanel_3() {
 		if (panel_3 == null) {
 			panel_3 = new JPanel();
@@ -157,12 +162,14 @@ public class VentanaInicioJuego extends JFrame {
 		}
 		return panel_3;
 	}
+
 	private JPanel getPanel_4() {
 		if (panel_4 == null) {
 			panel_4 = new JPanel();
 		}
 		return panel_4;
 	}
+
 	private JPanel getPanel_5() {
 		if (panel_5 == null) {
 			panel_5 = new JPanel();
@@ -171,6 +178,7 @@ public class VentanaInicioJuego extends JFrame {
 		}
 		return panel_5;
 	}
+
 	private JPanel getPanel_6() {
 		if (panel_6 == null) {
 			panel_6 = new JPanel();
@@ -180,12 +188,14 @@ public class VentanaInicioJuego extends JFrame {
 		}
 		return panel_6;
 	}
+
 	private JLabel getLblInsertaPassword() {
 		if (lblInsertaPassword == null) {
 			lblInsertaPassword = new JLabel("Inserta Password");
 		}
 		return lblInsertaPassword;
 	}
+
 	private JPasswordField getTextField_1_1() {
 		if (textField_1 == null) {
 			textField_1 = new JPasswordField();
@@ -193,6 +203,7 @@ public class VentanaInicioJuego extends JFrame {
 		}
 		return textField_1;
 	}
+
 	private JButton getBtnRegistrarse() {
 		if (btnRegistrarse == null) {
 			btnRegistrarse = new JButton("Registro");
@@ -200,10 +211,9 @@ public class VentanaInicioJuego extends JFrame {
 			btnRegistrarse.setActionCommand("Registro");
 
 		}
-		
+
 		return btnRegistrarse;
 	}
-
 
 	private class Controlador extends WindowAdapter implements ActionListener {
 
@@ -211,43 +221,41 @@ public class VentanaInicioJuego extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			String action = e.getActionCommand();
 			if (action.equals("Jugar")) {
-				String contra=textField_1.getText();
-				String usu=textField.getText();
-				System.out.println("contra "+contra+" usu "+usu);
+				String contra = textField_1.getText();
+				String usu = textField.getText();
+				System.out.println("contra " + contra + " usu " + usu);
 				boolean resultado = false;
-				
+
 				resultado = GestorBD.getGestorBD().comprobarLoggin(usu, contra);
-			
-					
-				
-				if(resultado){
-					VentanaPartida frame2 = new VentanaPartida();
+
+				if (resultado) {
+					VentanaPartida frame2 = new VentanaPartida(usu);
 					Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-					Dimension frameSize = frame2.getSize(); //Tama�o del frame actual (ancho x alto)
+					Dimension frameSize = frame2.getSize(); // Tama�o del frame actual (ancho x alto)
 					if (frameSize.height > screenSize.height) {
-					frameSize.height = screenSize.height;
+						frameSize.height = screenSize.height;
 					}
 					if (frameSize.width > screenSize.width) {
-					frameSize.width = screenSize.width;
+						frameSize.width = screenSize.width;
 					}
-					frame2.setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
+					frame2.setLocation((screenSize.width - frameSize.width) / 2,
+							(screenSize.height - frameSize.height) / 2);
 					frame2.setExtendedState(MAXIMIZED_BOTH);
 					frame2.setVisible(true);
 					dispose();
-				}else{
-					JFrame frame = new JFrame( "Estas Registrado?");
+				} else {
+					JFrame frame = new JFrame("Estas Registrado?");
 					JOptionPane.showMessageDialog(frame, "Error al introducir el nombre de Usuario o contraseña");
 				}
-				
+
 			} else if (action.equals("Salir")) {
 				cerrar();
-			}
-			else if (action.equals("Registro")){
-				VentanaRegistro frame3=new VentanaRegistro();
+			} else if (action.equals("Registro")) {
+				VentanaRegistro frame3 = new VentanaRegistro();
 				frame3.setVisible(true);
 				dispose();
-			}else if(action.equals("Ranking")) {
-				Ranking frame4= new Ranking();
+			} else if (action.equals("Ranking")) {
+				Ranking frame4 = new Ranking();
 				frame4.setVisible(true);
 				dispose();
 			}
@@ -267,6 +275,7 @@ public class VentanaInicioJuego extends JFrame {
 		}
 
 	}
+
 	private JButton getBtnRanking() {
 		if (btnRanking == null) {
 			btnRanking = new JButton("Ranking");
@@ -275,4 +284,4 @@ public class VentanaInicioJuego extends JFrame {
 		}
 		return btnRanking;
 	}
-	}
+}

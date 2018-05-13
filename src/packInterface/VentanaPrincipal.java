@@ -58,6 +58,7 @@ public class VentanaPrincipal extends JFrame {
 		}
 		return lblNorte;
 	}
+
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
@@ -67,12 +68,14 @@ public class VentanaPrincipal extends JFrame {
 		}
 		return panel;
 	}
+
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("Aceptar");
 		}
 		return btnNewButton;
 	}
+
 	private JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("Cancelar");
