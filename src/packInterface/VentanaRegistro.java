@@ -268,6 +268,9 @@ public class VentanaRegistro extends JFrame {
 				String usu=textField.getText();
 				if(this.comprobarPassIguales(contra, contra2)){
 					GestorBD.getGestorBD().anadirUsuario(usu, contra);
+					VentanaInicioJuego frame=new VentanaInicioJuego();
+					frame.setVisible(true);
+					dispose();
 				}else{
 					JFrame frame = new JFrame( "Error");
 					JOptionPane.showMessageDialog(frame, "Las Passwords no coinciden");

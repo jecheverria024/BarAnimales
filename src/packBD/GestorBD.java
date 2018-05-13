@@ -92,7 +92,9 @@ public class GestorBD {
 					.prepareStatement("SELECT Password FROM Usuario WHERE Username= ? ");
 			pst.setString(1, usu);
 			ResultSet rs=pst.executeQuery();
-			//respuesta=rs.getString(0);
+			System.out.println("El valor del result set es: "+rs.toString());
+			
+			//respuesta=rs.getString(num);
 			if(respuesta.equals(pass)){
 				correcto=true;
 			}
