@@ -39,7 +39,6 @@ public class ALoro implements IAnimalada {
 		}
 		else {
 			if(!ColaEntrada.getColaEntrada().colaVacia() ) {
-				System.out.println("CAMALEON ORDENADOR");
 				while(!correcto) {
 			    	pPos= (int) (Math.random()*5 + 1) ;		
 			    	if(ColaEntrada.getColaEntrada().comprobarLongitudCartas(pPos) && pPos>0) {

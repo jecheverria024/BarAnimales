@@ -186,5 +186,8 @@ public class ColaEntrada extends ObservableAbstracto {
 	public void comprobarSalto(int pPos){
 		cartas.comprobarSalto(pPos);
 	}
+	public int longitud(){
+		return cartas.longitud();
+	}
 
 }

@@ -12,17 +12,19 @@ public class ALeon implements IAnimalada
  ColaEntrada cola = ColaEntrada.getColaEntrada();
  
   public void hacerAnimalada(int pFuerza, String pColor) {
-    int posicion = cola.buscarPorFuerza(12);
+    int posicion = cola.buscarPorColorFuerza(12,"VERDE");
     int pos2= cola.buscarPorColorFuerza(pFuerza, pColor);
-   
-    
-    if (posicion==-1) {
+    CartaAnimal c=cola.devolverCarta(pos2);
+    System.out.println("Leon  "+ cola.longitud() +" posi "+posicion);
+    if (posicion==pos2|| posicion==-1) {
       cola.eliminarMonos();
-      cola.anadirEnPos(0,cola.getLista().getCarta(pos2));
+      cola.echarPorPosicion(pos2);;
+      cola.anadirEnPos(0,c);
+     
     }
     else {
-      EsLoQueHay.getEsLoQueHay().addLast(cola.getLista().getCarta(cola.getLista().longitud()-1));
-      cola.borrarCarta(cola.getLista().getCarta(cola.getLista().longitud()-1));
+      EsLoQueHay.getEsLoQueHay().addLast(c);
+      cola.borrarCarta(c);
     }
   }
   

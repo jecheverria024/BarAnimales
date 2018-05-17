@@ -17,15 +17,5 @@ public class Ordenador extends Usuario {
 
 	}
 
-	public void asignarColor(EnumColor pColor) {
-
-	}
-
-	public void actualizarPuntos(int pPuntos) {
-
-	}
-
-	public void asignarNombre(String pNombre) {
-
-	}
+	
 }
