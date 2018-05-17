@@ -83,7 +83,6 @@ public class GestorBD {
 	public boolean comprobarLoggin(String usu, String pass) {
 		con = abrirConexion();
 		boolean correcto = false;
-		String respuesta = " ";
 		try {
 			PreparedStatement pst = con.prepareStatement("SELECT Password FROM Usuario WHERE Username= ? ");
 			pst.setString(1, usu);

@@ -25,14 +25,7 @@ public class PuertaDelCielo {
 	}
 
 	public EnumColor calcularGanador() {
-		/*
-		ArrayList<Integer> a=new ArrayList<Integer>();
-		a.add(cartas.buscarColor(EnumColor.AMARILLO));
-		a.add(cartas.buscarColor(EnumColor.ROJO));
-		a.add(cartas.buscarColor(EnumColor.VERDE));
-		a.add(cartas.buscarColor(EnumColor.AZUL));
-		int max=Collections.max(a);
-		*/
+	
 		if(cartas.buscarColor(EnumColor.VERDE)>cartas.buscarColor(EnumColor.AZUL)) {
 			return EnumColor.VERDE;
 		}else if (cartas.buscarColor(EnumColor.VERDE)<cartas.buscarColor(EnumColor.AZUL)) {

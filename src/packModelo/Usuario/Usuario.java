@@ -16,10 +16,9 @@ public class Usuario extends ObservableAbstracto {
 	private ListaCartas mano;
 	private ListaCartas mazo;
 	private EnumColor color;
-	private int puntos;
 
 	public Usuario(EnumColor pColor) {
-		puntos = 0;
+		
 		color = pColor;
 		mano = new ListaCartas();
 		mazo = inicializarMazo(pColor);

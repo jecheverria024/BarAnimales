@@ -95,16 +95,21 @@ public class BarBestial {
 
 	private void finalizarPartida() {
 		JFrame frame = new JFrame("PARTIDA FINALIZADA");
-		JOptionPane.showMessageDialog(frame, "El ganador es " + PuertaDelCielo.getPuertaDelCielo().calcularGanador());
+		EnumColor ganador=PuertaDelCielo.getPuertaDelCielo().calcularGanador();
+		JOptionPane.showMessageDialog(frame, "El ganador es " + ganador);
 		EsLoQueHay.getEsLoQueHay().imprimir();
 		PuertaDelCielo.getPuertaDelCielo().imprimir();
 		ColaEntrada.getColaEntrada().imprimir();
-		int puntos=100; //AQUI PONER EL METODO PARA CALCULAR PUNTOS 
-		this.almacenarRanking(puntos);
+		if(ganador.equals(EnumColor.AZUL)) {
+			jugador.calcularPuntos();
+			this.almacenarRanking();
+			System.out.println("he entrado");
+		}
+		
 	}
 
-	private void almacenarRanking(int puntos) {
-		this.jugador.almacenarRanking(puntos);
+	private void almacenarRanking() {
+		this.jugador.almacenarRanking();
 		
 	}
 
