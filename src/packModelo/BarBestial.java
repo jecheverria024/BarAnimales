@@ -48,7 +48,6 @@ public class BarBestial {
 		this.ordenador = new Ordenador(EnumColor.VERDE);
 		turno = true;
 		juegoFinalizado = false;
-		imprimirmazo();
 	}
 
 	public boolean jugar(int pos) {
@@ -57,8 +56,8 @@ public class BarBestial {
 		cambiarTurno();
 		if (ordenador.tieneCartas()) {
 			JFrame frame = new JFrame("Ordenador");
-			JOptionPane.showMessageDialog(frame, "Turno del ordenador","Ordenador", JOptionPane.INFORMATION_MESSAGE);
-	
+			JOptionPane.showMessageDialog(frame, "Turno del ordenador", "Ordenador", JOptionPane.INFORMATION_MESSAGE);
+
 			ordenador.jugar();
 
 			cambiarTurno();
@@ -84,7 +83,6 @@ public class BarBestial {
 		}
 	}
 
-	// aqui hay dudas
 	public Jugador getJugador() {
 		return this.jugador;
 	}
@@ -95,30 +93,18 @@ public class BarBestial {
 
 	private void finalizarPartida() {
 		JFrame frame = new JFrame("PARTIDA FINALIZADA");
-		EnumColor ganador=PuertaDelCielo.getPuertaDelCielo().calcularGanador();
+		EnumColor ganador = PuertaDelCielo.getPuertaDelCielo().calcularGanador();
 		JOptionPane.showMessageDialog(frame, "El ganador es " + ganador);
-		EsLoQueHay.getEsLoQueHay().imprimir();
-		PuertaDelCielo.getPuertaDelCielo().imprimir();
-		ColaEntrada.getColaEntrada().imprimir();
-		if(ganador.equals(EnumColor.AZUL)) {
+		if (ganador.equals(EnumColor.AZUL)) {
 			jugador.calcularPuntos();
 			this.almacenarRanking();
-			System.out.println("he entrado");
 		}
-		
+
 	}
 
 	private void almacenarRanking() {
 		this.jugador.almacenarRanking();
-		
+
 	}
 
-	
-
-	private void imprimirmazo() {
-		System.out.println("jugador");
-		jugador.imprimirmazo();
-		System.out.println("ordenador");
-		ordenador.imprimirmazo();
-	}
 }

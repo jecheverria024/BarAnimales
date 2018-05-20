@@ -42,13 +42,6 @@ public class VentanaPartida extends JFrame implements IObserver {
 	private JLabel[] mano;
 	private JPanel manoJugador;
 
-	/**
-	 * Launch the application.
-	 */
-
-	/**
-	 * Create the frame.
-	 */
 	public VentanaPartida(String pJugador) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -241,8 +234,7 @@ public class VentanaPartida extends JFrame implements IObserver {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String action = e.getActionCommand();
-			if (action.equals("Baraja")) {// falta meter turnos y comprobar si el jugador tiene algun hueco libre en la
-											// mano
+			if (action.equals("Baraja")) {
 			}
 		}
 
@@ -260,7 +252,6 @@ public class VentanaPartida extends JFrame implements IObserver {
 			this.manoJugador.repaint();
 			System.out.println("mano jugador");
 		}
-	
 
 	}
 

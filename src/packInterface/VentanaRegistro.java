@@ -48,9 +48,7 @@ public class VentanaRegistro extends JFrame {
 	private JLabel lblConfirmarContrasea;
 	private JPasswordField textField_2;
 
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -64,9 +62,7 @@ public class VentanaRegistro extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public VentanaRegistro() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

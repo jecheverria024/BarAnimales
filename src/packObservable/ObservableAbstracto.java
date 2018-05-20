@@ -25,7 +25,7 @@ public abstract class ObservableAbstracto {
 	public void notificar(ObservableAbstracto pOA, Object o) {
 		Iterator<IObserver> it = observadores.iterator();
 		while (it.hasNext()) {
-			it.next().update(pOA,o);
+			it.next().update(pOA, o);
 		}
 	}
 }

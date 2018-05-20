@@ -9,13 +9,8 @@ public class Ordenador extends Usuario {
 
 	}
 
-	// Esto se hará mas complejo en los siguientes sprints, de momento solo echa la
-	// carta que esta en primera posicion
 	public void jugar() {
-
 		echarCarta(0);
-
 	}
 
-	
 }

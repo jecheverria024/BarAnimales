@@ -6,8 +6,8 @@ public class AJirafa implements IAnimalada {
 
 	@Override
 	public void hacerAnimalada(int pFuerza, String pColor) {
-		int posicion=ColaEntrada.getColaEntrada().buscarPorColorFuerza(pFuerza, pColor);
-			ColaEntrada.getColaEntrada().adelantar(posicion, pFuerza);
-		
+		int posicion = ColaEntrada.getColaEntrada().buscarPorColorFuerza(pFuerza, pColor);
+		ColaEntrada.getColaEntrada().adelantar(posicion, pFuerza);
+
 	}
 }

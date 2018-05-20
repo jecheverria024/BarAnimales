@@ -13,25 +13,27 @@ import packBD.GestorBD;
 
 public class GestorRanking {
 	private static GestorRanking theGestorRanking;
+
 	private GestorRanking() {
 	}
+
 	public static GestorRanking getGestorRanking() {
 		if (theGestorRanking == null) {
 			theGestorRanking = new GestorRanking();
 		}
 		return theGestorRanking;
 	}
-	/*pasa los parametros al gestorBD */
-	public void almacenarRanking(String nombre,  int puntuacion) throws SQLException {
-			GestorBD.getGestorBD().almacenarRanking(nombre,puntuacion );
+
+	/* pasa los parametros al gestorBD */
+	public void almacenarRanking(String nombre, int puntuacion) throws SQLException {
+		GestorBD.getGestorBD().almacenarRanking(nombre, puntuacion);
 	}
 
-	
-	public JSONArray  getRanking() throws JSONException {
-		ResultSet rs= GestorBD.getGestorBD().execSQL("SELECT * FROM Usuario ORDER BY Puntuacion DESC LIMIT 10");	
+	public JSONArray getRanking() throws JSONException {
+		ResultSet rs = GestorBD.getGestorBD().execSQL("SELECT * FROM Usuario ORDER BY Puntuacion DESC LIMIT 10");
 		JSONArray json = new JSONArray();
 		try {
-			ResultSetMetaData rsmd =rs.getMetaData();
+			ResultSetMetaData rsmd = rs.getMetaData();
 			while (rs.next()) {
 				int numCol = rsmd.getColumnCount();
 				JSONObject obj = new JSONObject();
@@ -50,11 +52,9 @@ public class GestorRanking {
 			}
 
 		} catch (SQLException ex) {
-			System.out.println("2");
 			System.out.println("SQLException: " + ex.getMessage());
 		}
 		return json;
 	}
-	
-}
 
+}

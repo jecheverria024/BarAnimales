@@ -34,7 +34,8 @@ public class ColaEntrada extends ObservableAbstracto {
 		boolean lleno = comprobarColaCompleta();
 		if (lleno) {
 			JFrame frame = new JFrame("Cola de Entrada");
-			JOptionPane.showMessageDialog(frame, "Dos animales entran al bar!","Cola de entrada", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(frame, "Dos animales entran al bar!", "Cola de entrada",
+					JOptionPane.INFORMATION_MESSAGE);
 			cartas.dosPrimeras();
 			cartas.ultimaCarta();
 		}
@@ -42,9 +43,7 @@ public class ColaEntrada extends ObservableAbstracto {
 	}
 
 	public void add(CartaAnimal c) {
-
 		cartas.add(c);
-
 	}
 
 	public boolean comprobarLongitudCartas(int pNum) {
@@ -81,8 +80,6 @@ public class ColaEntrada extends ObservableAbstracto {
 		this.realizarRecurrentes(pCarta);
 		this.notificar(this, this.infoCartas());
 	}
-	
-
 
 	private void realizarRecurrentes(CartaAnimal pCarta) {
 		this.cartas.realizarRecurrentes(pCarta);
@@ -97,11 +94,6 @@ public class ColaEntrada extends ObservableAbstracto {
 		return this.cartas;
 	}
 
-	public void imprimir() {
-		System.out.println("Lista de cartas en la cola al finalizar");
-		cartas.imprimirlista();
-	}
-
 	// buscarPorColorFuerza(intfuerza, color)
 	public int buscarPorColorFuerza(int pFuerza, String pColor) {
 		return this.cartas.buscarPorColorFuerza(pFuerza, pColor);
@@ -113,7 +105,6 @@ public class ColaEntrada extends ObservableAbstracto {
 	}
 
 	// buscarporpos
-
 	public int buscarPorPosicion(int pPos) {
 		return this.cartas.buscarPorPosicion(pPos);
 	}
@@ -125,13 +116,12 @@ public class ColaEntrada extends ObservableAbstracto {
 
 	// AdelantarMenoresNoCebra(posInicial, posFinal){}
 	public boolean adelantarMenoresNoCebra(int pPosInicial, int pFuerza) {
-		System.out.println(pPosInicial);
 		return this.cartas.adelantarMenoresNoCebra(pPosInicial, pFuerza);
 	}
 
 	// echarMenoresNoCebra(fuerza)
-	public boolean echarMenoresNoCebra(int pPosInicial,int pFuerza) {
-		return this.cartas.echarMenoresNoCebra( pPosInicial,pFuerza);
+	public boolean echarMenoresNoCebra(int pPosInicial, int pFuerza) {
+		return this.cartas.echarMenoresNoCebra(pPosInicial, pFuerza);
 	}
 
 	// ordenar
@@ -149,44 +139,46 @@ public class ColaEntrada extends ObservableAbstracto {
 		this.cartas.copiarAnimal(pFuerza);
 	}
 
-	
-
 	// echarPorPosicion(posicion)
 	public void echarPorPosicion(int pPos) {
 		this.cartas.echarPorPosicion(pPos);
 	}
-	public int hayMas(){
+
+	public int hayMas() {
 		return this.cartas.hayMas();
 	}
-	public void espantar(){
+
+	public void espantar() {
 		this.cartas.espantar();
 	}
-	
-	public void anadirEnPos(int pos, CartaAnimal c){
+
+	public void anadirEnPos(int pos, CartaAnimal c) {
 		this.cartas.anadirEnPos(pos, c);
 	}
-	
-	public void moverDemasMonos(){
+
+	public void moverDemasMonos() {
 		this.cartas.moverDemasMonos();
 	}
-	public CartaAnimal devolverCarta(int pos){
-		CartaAnimal c= cartas.getCarta(pos);
+
+	public CartaAnimal devolverCarta(int pos) {
+		CartaAnimal c = cartas.getCarta(pos);
 		return c;
 	}
-	
-	
-	public void eliminarMonos(){
+
+	public void eliminarMonos() {
 		cartas.eliminarMonos();
 	}
 
 	public void borrarCarta(CartaAnimal carta) {
 		cartas.borrarCarta(carta);
-		
+
 	}
-	public void comprobarSalto(int pPos){
+
+	public void comprobarSalto(int pPos) {
 		cartas.comprobarSalto(pPos);
 	}
-	public int longitud(){
+
+	public int longitud() {
 		return cartas.longitud();
 	}
 

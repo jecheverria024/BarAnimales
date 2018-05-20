@@ -45,9 +45,6 @@ public class VentanaInicioJuego extends JFrame {
 	private JButton btnRegistrarse;
 	private JButton btnRanking;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -61,9 +58,6 @@ public class VentanaInicioJuego extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public VentanaInicioJuego() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -223,13 +217,11 @@ public class VentanaInicioJuego extends JFrame {
 			if (action.equals("Jugar")) {
 				String contra = textField_1.getText();
 				String usu = textField.getText();
-				System.out.println("contra " + contra + " usu " + usu);
 				boolean resultado = false;
-				if(contra.equals("") || usu.equals("")) {
+				if (contra.equals("") || usu.equals("")) {
 					JFrame frame = new JFrame("Estas Registrado?");
 					JOptionPane.showMessageDialog(frame, "Rellene todos los campos");
-				}
-				else {
+				} else {
 					resultado = GestorBD.getGestorBD().comprobarLoggin(usu, contra);
 					if (resultado) {
 						VentanaPartida frame2 = new VentanaPartida(usu);

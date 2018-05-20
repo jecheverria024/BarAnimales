@@ -25,23 +25,15 @@ public class PuertaDelCielo {
 	}
 
 	public EnumColor calcularGanador() {
-	
-		if(cartas.buscarColor(EnumColor.VERDE)>cartas.buscarColor(EnumColor.AZUL)) {
+
+		if (cartas.buscarColor(EnumColor.VERDE) > cartas.buscarColor(EnumColor.AZUL)) {
 			return EnumColor.VERDE;
-		}else if (cartas.buscarColor(EnumColor.VERDE)<cartas.buscarColor(EnumColor.AZUL)) {
+		} else if (cartas.buscarColor(EnumColor.VERDE) < cartas.buscarColor(EnumColor.AZUL)) {
 			return EnumColor.AZUL;
-		}else {
+		} else {
 			return cartas.minPuntos();
 		}
-		
-		
-		
+
 	}
-	
-	
-	
-	public void imprimir() {
-		System.out.println("Lista de cartas en la puerta del cielo");
-		cartas.imprimirlista();
-	}
+
 }

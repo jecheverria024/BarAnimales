@@ -6,9 +6,8 @@ import packModelo.Animalada.ACanguro;
 public class Camaleon extends Animal {
 
 	public Camaleon() {
-		
-			this.inicializarAnimalada(new ACamaleon());
-	
+
+		this.inicializarAnimalada(new ACamaleon());
 
 	}
 

@@ -6,7 +6,7 @@ public class ASerpiente implements IAnimalada {
 
 	@Override
 	public void hacerAnimalada(int fuerza, String color) {
-			ColaEntrada.getColaEntrada().ordenar();
+		ColaEntrada.getColaEntrada().ordenar();
 	}
 
 }

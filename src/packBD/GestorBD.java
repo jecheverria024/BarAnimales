@@ -60,7 +60,6 @@ public class GestorBD {
 			PreparedStatement pst = con
 					.prepareStatement("INSERT INTO Usuario(Username,Password) VALUES ('" + usu + "','" + pass + "')");
 			pst.executeUpdate();
-			System.out.println("el usuario se agrego correctamente");
 		} catch (SQLException SQLE) {
 			System.out.println("Error al insertar usuario \n ERROR : " + SQLE.getMessage());
 		}
@@ -73,7 +72,6 @@ public class GestorBD {
 			pst.setInt(1, puntuacion);
 			pst.setString(2, nombre);
 			pst.executeUpdate();
-			System.out.println("LA PUNTUACION SE AGREGO CON EXITO A LA BD");
 		} catch (SQLException SQLE) {
 			System.out.println("ERROR AL INSERTAR LA PUNTUACION DE LA BD \n ERROR : " + SQLE.getMessage());
 		}
@@ -87,7 +85,6 @@ public class GestorBD {
 			PreparedStatement pst = con.prepareStatement("SELECT Password FROM Usuario WHERE Username= ? ");
 			pst.setString(1, usu);
 			ResultSet rs = pst.executeQuery();
-			System.out.println("El valor del result set es: ");
 			rs.next();
 			rs.getString("Password");
 
@@ -113,10 +110,8 @@ public class GestorBD {
 			pst.setString(1, usu);
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
-				System.out.println("existe");
 				return false;
 			}
-			System.out.println("no existe");
 			return true;
 
 		} catch (SQLException e) {
@@ -133,7 +128,6 @@ public class GestorBD {
 			return pst.executeQuery();	
 
 		} catch (SQLException ex) {
-			System.out.println("1");
 			System.out.println("SQLException: " + ex.getMessage());
 			return null;
 		}

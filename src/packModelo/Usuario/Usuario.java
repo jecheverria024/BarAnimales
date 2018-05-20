@@ -18,7 +18,7 @@ public class Usuario extends ObservableAbstracto {
 	private EnumColor color;
 
 	public Usuario(EnumColor pColor) {
-		
+
 		color = pColor;
 		mano = new ListaCartas();
 		mazo = inicializarMazo(pColor);
@@ -63,17 +63,7 @@ public class Usuario extends ObservableAbstracto {
 
 	public void barajar() {
 		mazo.barajar();
-		// imprimirmazo();
-	}
-
-	public void imprimirmazo() {
-
-		mazo.imprimirlista();
-	}
-
-	public void imprimirmano() {
-
-		mano.imprimirlista();
+		
 	}
 
 	public ListaCartas getListaManos() {

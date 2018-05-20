@@ -2,7 +2,7 @@ package packModelo.Animal;
 
 import packModelo.Animalada.AHipopotamo;
 
-public class Hipopotamo extends Animal implements IRecurrente{
+public class Hipopotamo extends Animal implements IRecurrente {
 	public Hipopotamo() {
 		this.inicializarAnimalada(new AHipopotamo());
 	}
@@ -10,8 +10,7 @@ public class Hipopotamo extends Animal implements IRecurrente{
 	@Override
 	public void recurrir(int pFuerza, String pColor) {
 		this.ejecutarAnimalada(pFuerza, pColor);
-		
-	}
 
+	}
 
 }

@@ -16,7 +16,6 @@ public class ACanguro implements IAnimalada {
 	@Override
 public void hacerAnimalada(int pFuerza, String pColor) {
 		
-		//int num=0;
 		JFrame frame = new JFrame( "Eleccion");
 		boolean correcto=false;
 		int pPos=-1;
@@ -33,7 +32,6 @@ public void hacerAnimalada(int pFuerza, String pColor) {
 			    	if(ColaEntrada.getColaEntrada().comprobarLongitudCartas(pPos) && pPos>0) {
 			    		if(pPos==1 || pPos==2) {
 			    		correcto=true;}
-			    		//pPos--;
 			    	}
 				}
 				
@@ -43,7 +41,6 @@ public void hacerAnimalada(int pFuerza, String pColor) {
 			}
 		}else{
 			if(!ColaEntrada.getColaEntrada().colaVacia() ){
-				System.out.println("Canguro Ordenador");
 				while(!correcto) {
 			    	pPos= (int) (Math.random()*1 + 1) ;		
 			    	if(ColaEntrada.getColaEntrada().comprobarLongitudCartas(pPos) && pPos>0) {

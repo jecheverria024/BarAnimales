@@ -6,7 +6,6 @@ public class AMofeta implements IAnimalada {
 
 	@Override
 	public void hacerAnimalada(int pFuerza, String pColor) {
-		System.out.println("mofetaaaaaaaaaaa");
 		int echados = 0;
 		int fuerza = 12;
 		boolean flag = !ColaEntrada.getColaEntrada().colaVacia();

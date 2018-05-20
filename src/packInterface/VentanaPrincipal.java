@@ -21,9 +21,6 @@ public class VentanaPrincipal extends JFrame {
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -37,9 +34,6 @@ public class VentanaPrincipal extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public VentanaPrincipal() {
 		setTitle("Bar Bestial");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

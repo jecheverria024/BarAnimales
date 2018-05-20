@@ -9,10 +9,9 @@ public class Jugador extends Usuario {
 	private String nombre;
 	private int puntos;
 
-
 	public Jugador(EnumColor pColor, String pNombre) {
 		super(pColor);
-		puntos=0;
+		puntos = 0;
 		nombre = pNombre;
 	}
 
@@ -28,17 +27,14 @@ public class Jugador extends Usuario {
 	public void almacenarRanking() {
 		try {
 			GestorRanking.getGestorRanking().almacenarRanking(nombre, puntos);
-			System.out.println("nombre: "+nombre+" puntos "+puntos);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-	}
-	public void calcularPuntos() {
-		this.puntos= puntos+1;
-	}
-	
-	
 
+	}
+
+	public void calcularPuntos() {
+		this.puntos = puntos + 1;
+	}
 
 }

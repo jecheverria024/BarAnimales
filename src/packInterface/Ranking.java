@@ -31,10 +31,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter; 
 import java.awt.FlowLayout;
 
-
-
-
-
 public class Ranking extends JFrame {
 
 	private JPanel contentPane;
@@ -45,9 +41,6 @@ public class Ranking extends JFrame {
 	private JButton btnSalir;
 	private JPanel panel_2;
 	private JButton btnVolverAlMen;
-
-
-	
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -62,9 +55,7 @@ public class Ranking extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public Ranking() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 540, 370);
@@ -177,9 +168,6 @@ public class Ranking extends JFrame {
 
 		}
 		}
-		
-	
-
 	
 	private JPanel getPanel_2() {
 		if (panel_2 == null) {
