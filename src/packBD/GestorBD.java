@@ -1,32 +1,19 @@
 package packBD;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
-import net.ucanaccess.jdbc.UcanaccessSQLException;
 
 public class GestorBD {
 	private static GestorBD miGestorBd;
 	// DATOS PARA EL ACCESO DE LA BD
-	private Statement Instruccion;
-	private ResultSet Resultado;
-	private String SentenciaSQL;
 	private Connection con = null;
 	private String driver = "net.ucanaccess.jdbc.UcanaccessDriver";
-	private String url = "jdbc:ucanaccess://src/BarBestial.accdb";
+	//private String url = "jdbc:ucanaccess://src/packBD/BarBestial.accdb";
 
 	// CONSTRUCCTORA
 	private GestorBD() {
@@ -43,7 +30,29 @@ public class GestorBD {
 		try {
 			if (con == null) {
 				Class.forName(driver);
-				con = DriverManager.getConnection(url);
+				
+				
+				java.io.File dbFile;
+				String connStr=null;
+				try {
+					dbFile = java.io.File.createTempFile("tempdb", ".accdb");
+					dbFile.deleteOnExit();
+					java.nio.file.Files.copy(
+							getClass().getResourceAsStream("/packBD/BarBestial.accdb"), 
+					        dbFile.toPath(), 
+					        java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+					connStr= String.format(
+					        "jdbc:ucanaccess://%s;immediatelyReleaseResources=true", 
+					        dbFile.getAbsolutePath());
+
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				
+				
+				con = DriverManager.getConnection(connStr);
 				System.out.println("conexion bd correcta ");
 			}
 		} catch (SQLException SQLE) {
@@ -104,7 +113,6 @@ public class GestorBD {
 	public boolean comprobarNoExiste(String usu) {
 		con = abrirConexion();
 		boolean correcto = false;
-		String respuesta = " ";
 		try {
 			PreparedStatement pst = con.prepareStatement("SELECT * FROM Usuario WHERE Username= ? ");
 			pst.setString(1, usu);
@@ -131,6 +139,14 @@ public class GestorBD {
 			System.out.println("SQLException: " + ex.getMessage());
 			return null;
 		}
+	}
+
+	public boolean comprobarPassIguales(String contra, String contra2) {
+		if(contra.equals(contra2)) {
+			return true;
+		}
+		else 
+			return false;
 	}
 
 }
