@@ -284,8 +284,8 @@ public class VentanaRegistro extends JFrame {
 				String contra = textField_1.getText();
 				String contra2 = textField_2.getText();
 				String usu = textField.getText();
-				if (comprobarNoExiste(usu)) {
-					if (this.comprobarPassIguales(contra, contra2)) {
+				if (GestorBD.getGestorBD().comprobarNoExiste(usu)) {
+					if (GestorBD.getGestorBD().comprobarPassIguales(contra, contra2)) {
 						GestorBD.getGestorBD().anadirUsuario(usu, contra);
 						VentanaInicioJuego frame = new VentanaInicioJuego();
 						frame.setVisible(true);
@@ -317,17 +317,6 @@ public class VentanaRegistro extends JFrame {
 
 		}
 
-		public boolean comprobarPassIguales(String pass1, String pass2) {
-			if (pass1.equals(pass2)) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-
-		private boolean comprobarNoExiste(String pUsu) {
-			return GestorBD.getGestorBD().comprobarNoExiste(pUsu);
-		}
 
 	}
 }
